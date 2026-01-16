@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* ✅ dein Hero-3D-Kreis Setup wie vorher */
     .hero-graphic {
       width: 100%;
       max-width: 400px;
@@ -60,14 +61,8 @@
     }
 
     @keyframes pulseGlowInner {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.5;
-      }
-      50% {
-        transform: scale(1.15);
-        opacity: 0.85;
-      }
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.15); opacity: 0.85; }
     }
 
     .hero-graphic::after {
@@ -148,37 +143,71 @@
 
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon service-icon--design"></div>
+          <div class="service-icon service-icon--design" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+            </svg>
+          </div>
           <h3>Webdesign & Entwicklung</h3>
           <p>Individuelle Webseiten, die zeitgemäß gestaltet sind und auf allen Geräten perfekt funktionieren. Responsive Design ist bei uns Standard.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--cloud"></div>
+          <div class="service-icon service-icon--cloud" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 17.5a4.5 4.5 0 0 0-1.7-8.6A6 6 0 0 0 6.2 9.8" />
+              <path d="M6 17.5a4.5 4.5 0 0 1 .3-9" />
+              <path d="M8 17.5h12" />
+            </svg>
+          </div>
           <h3>Cloudflare Hosting</h3>
           <p>Schnelles, sicheres Hosting über Cloudflare. Ihre Webseite profitiert von globaler Verfügbarkeit, DDoS-Schutz und optimalen Ladezeiten.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--seo"></div>
+          <div class="service-icon service-icon--seo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
+              <path d="M21 21l-4.35-4.35" />
+              <path d="M10 8v4l3 2" />
+            </svg>
+          </div>
           <h3>SEO-Optimierung</h3>
           <p>Alle unsere Webseiten werden von Grund auf für Suchmaschinen optimiert. Technisches SEO, schnelle Ladezeiten und sauberer Code.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--lock"></div>
+          <div class="service-icon service-icon--lock" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+              <path d="M6 11h12v10H6z" />
+              <path d="M12 15v3" />
+            </svg>
+          </div>
           <h3>Rechtliche Sicherheit</h3>
           <p>Impressum und Datenschutzerklärung werden von uns erstellt und regelmäßig aktualisiert – immer auf dem neuesten rechtlichen Stand.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--update"></div>
+          <div class="service-icon service-icon--update" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-3-6.7" />
+              <path d="M21 3v6h-6" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+          </div>
           <h3>Monatliche Updates</h3>
           <p>Bei unserem Hosting-Service werden Sicherheitsupdates, Inhaltsaktualisierungen und technische Wartung regelmäßig durchgeführt.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--shield"></div>
+          <div class="service-icon service-icon--shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
           <h3>Technische Checks</h3>
           <p>Regelmäßige Sicherheitsscans und Performance-Analysen sorgen dafür, dass Ihre Webseite stets optimal läuft.</p>
         </div>
@@ -262,7 +291,6 @@
 
 <!-- Three.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<!-- RoundedBoxGeometry (für abgerundete Würfelkanten) -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
 
 <script>
@@ -279,16 +307,12 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(0x000000, 0);
 
-  /* ✅ WICHTIG: Damit die Farben wieder wie “ursprünglich” wirken */
-  /* renderer.outputEncoding = THREE.sRGBEncoding; */
-
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
   camera.position.set(0, 0, 7);
   camera.lookAt(0, 0, 0);
 
-  // Licht Setup: clean & hochwertig
   const ambient = new THREE.AmbientLight(0xffffff, 0.55);
   scene.add(ambient);
 
@@ -300,7 +324,7 @@
   fill.position.set(-6, -2, 6);
   scene.add(fill);
 
-  // Farben pro Seite (ursprünglich)
+  // ✅ Würfel-Farben (Original wie am Anfang)
   const cubeColors1 = [0x3b82f6, 0x2563eb, 0x60a5fa, 0x1d4ed8, 0x3b82f6, 0x2563eb];
   const cubeColors2 = [0x2563eb, 0x1d4ed8, 0x3b82f6, 0x1e40af, 0x2563eb, 0x1d4ed8];
   const cubeColors3 = [0x60a5fa, 0x3b82f6, 0x93c5fd, 0x2563eb, 0x60a5fa, 0x3b82f6];
@@ -314,7 +338,7 @@
     return new THREE.BoxGeometry(size, size, size);
   }
 
-  /* ✅ EINZIGE ÄNDERUNG: wieder Lambert wie “ursprünglich” */
+  // ✅ Lambert wie “ursprünglich” = Farben wirken korrekt
   function faceMaterials(colors) {
     return colors.map((c) => new THREE.MeshLambertMaterial({ color: c }));
   }
@@ -339,7 +363,6 @@
     return cube;
   }
 
-  // Gruppe statt Chaos: besser kontrollierbar
   const group = new THREE.Group();
   scene.add(group);
 
