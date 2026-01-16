@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Gastro Fair One – Das Webseiten-Abo für Gastronomen. Professionelle Webseite, Hosting und rechtliche Absicherung in einem Paket.">
     <meta name="keywords" content="Gastronomie Webseite, Restaurant Website, Gastro Webdesign, Gastro Fair One">
     <meta name="author" content="Webstudio PM">
@@ -10,6 +10,12 @@
     <meta property="og:title" content="Gastro Fair One – Webseiten für Gastronomen">
     <meta property="og:description" content="Das Rundum-sorglos-Paket für Ihre Gastronomie-Webseite. Modern, rechtssicher und persönlich betreut.">
     <meta property="og:type" content="website">
+    
+    <!-- Mobile Web App -->
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
     <link rel="canonical" href="https://webstudio-pm.de/gastro-fair-one.html">
     <title>Gastro Fair One – Webseiten für Gastronomen | Webstudio PM</title>
     <link rel="stylesheet" href="style.css">
@@ -18,12 +24,12 @@
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">Webstudio <span>pm</span></a>
-            <button class="menu-toggle" aria-label="Menü öffnen">
+            <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <nav>
+            <nav id="main-nav" role="navigation">
                 <a href="index.html">Startseite</a>
                 <a href="webseite-erstellen.html">Leistungen</a>
                 <a href="gastro-fair-one.html" class="active">Gastro Fair One</a>
