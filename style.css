@@ -1,336 +1,902 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* ============================================
+   WEBSTUDIO PM – Mobile-First Responsive CSS
+   ============================================ */
 
-  <meta name="description" content="Webstudio PM – Professionelle Webseiten-Erstellung und Hosting. SEO-optimierte Websites mit Cloudflare-Hosting, monatlichen Updates und rechtlicher Absicherung.">
-  <meta name="keywords" content="Webdesign, Webentwicklung, Hosting, SEO, Cloudflare, professionelle Webseiten">
-  <meta name="author" content="Webstudio PM">
-  <meta name="robots" content="index, follow">
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Colors */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-light: #60a5fa;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
+  --color-white: #ffffff;
+  --color-off-white: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-dark: #111827;
+  
+  /* Typography */
+  --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Layout */
+  --container-max: 1200px;
+  --container-padding: 1rem;
+  --header-height: 70px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
 
-  <meta property="og:title" content="Webstudio PM – Professionelle Webseiten">
-  <meta property="og:description" content="Wir erstellen und hosten professionelle, SEO-optimierte Webseiten für Ihr Unternehmen.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webstudio-pm.de">
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <link rel="canonical" href="https://webstudio-pm.de">
-  <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
-  <link rel="stylesheet" href="style.css">
-</head>
+body {
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background: var(--color-white);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
 
-<body>
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
-<header>
-  <div class="header-container">
-    <a href="/index.html" class="logo">Webstudio <span>pm</span></a>
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
 
-    <button class="menu-toggle" aria-label="Menü öffnen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+a:hover {
+  color: var(--color-primary-dark);
+}
 
-    <nav>
-      <a href="/index.html" class="active">Startseite</a>
-      <a href="/webseite-erstellen.html">Leistungen</a>
-      <a href="/gastro-fair-one.html">Gastro Fair One</a>
-      <a href="/contact.html">Kontakt</a>
-    </nav>
-  </div>
-</header>
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
 
-<main>
+h1 {
+  font-size: var(--font-size-2xl);
+}
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-container">
+h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-md);
+}
 
-      <div class="hero-content">
-        <h1 class="fade-in">Ihre Webseite, <em>professionell</em> umgesetzt</h1>
+h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
 
-        <p class="fade-in delay-1">
-          Wir erstellen moderne, SEO-optimierte Webseiten, die Ihr Unternehmen perfekt repräsentieren.
-          Inklusive zuverlässigem Hosting und kontinuierlicher Pflege.
-        </p>
+p {
+  margin-bottom: var(--spacing-md);
+}
 
-        <div class="btn-group fade-in delay-2">
-          <a href="/contact.html" class="btn btn-primary">Projekt starten</a>
-          <a href="/webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
-        </div>
-      </div>
+/* ---------- Header ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
 
-      <div class="hero-visual fade-in delay-3">
-        <div class="hero-graphic">
-          <canvas id="cubes-canvas"></canvas>
-        </div>
-      </div>
+.header-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--container-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: var(--header-height);
+}
 
-    </div>
-  </section>
+.logo {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
 
-  <!-- SERVICES -->
-  <section>
-    <div class="section-container">
+.logo span {
+  color: var(--color-primary);
+}
 
-      <div class="section-header">
-        <h2>Unsere Leistungen</h2>
-        <p>Von der Konzeption bis zum laufenden Betrieb – wir begleiten Sie bei jedem Schritt zu Ihrer perfekten Webpräsenz.</p>
-      </div>
+.logo:hover {
+  color: var(--color-text);
+}
 
-      <div class="services-grid">
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
 
-        <div class="service-card">
-          <div class="service-icon service-icon--design service-icon--svg" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
-            </svg>
-          </div>
-          <h3>Webdesign & Entwicklung</h3>
-          <p>Individuelle Webseiten, modern gestaltet und auf allen Geräten perfekt. Responsive Design ist Standard.</p>
-        </div>
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: var(--transition-base);
+}
 
-        <div class="service-card">
-          <div class="service-icon service-icon--cloud service-icon--svg" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 17.5a4.5 4.5 0 0 0-1.7-8.6A6 6 0 0 0 6.2 9.8" />
-              <path d="M6 17.5a4.5 4.5 0 0 1 .3-9" />
-              <path d="M8 17.5h12" />
-            </svg>
-          </div>
-          <h3>Cloudflare Hosting</h3>
-          <p>Schnell, sicher und global verfügbar. Mit DDoS-Schutz und Top-Ladezeiten über Cloudflare.</p>
-        </div>
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
 
-        <div class="service-card">
-          <div class="service-icon service-icon--seo service-icon--svg" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
-              <path d="M21 21l-4.35-4.35" />
-              <path d="M10 8v4l3 2" />
-            </svg>
-          </div>
-          <h3>SEO-Optimierung</h3>
-          <p>Technisches SEO, saubere Struktur und schnelle Performance – von Anfang an sauber gebaut.</p>
-        </div>
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
 
-        <div class="service-card">
-          <div class="service-icon service-icon--lock service-icon--svg" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 11V8a5 5 0 0 1 10 0v3" />
-              <path d="M6 11h12v10H6z" />
-              <path d="M12 15v3" />
-            </svg>
-          </div>
-          <h3>Rechtliche Sicherheit</h3>
-          <p>Impressum und Datenschutzerklärung werden erstellt und gepflegt – rechtlich sauber und aktuell.</p>
-        </div>
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 
-        <div class="service-card">
-          <div class="service-icon service-icon--update service-icon--svg" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12a9 9 0 1 1-3-6.7" />
-              <path d="M21 3v6h-6" />
-              <path d="M12 7v5l3 2" />
-            </svg>
-          </div>
-          <h3>Monatliche Updates</h3>
-          <p>Wartung, Inhalte, technische Checks – damit die Seite nicht nach 2 Monaten wieder alt wirkt.</p>
-        </div>
+/* Navigation */
+nav {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xl) var(--container-padding);
+  gap: var(--spacing-sm);
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+  overflow-y: auto;
+}
 
-        <div class="service-card">
-          <div class="service-icon service-icon--shield service-icon--svg" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
-              <path d="M9 12l2 2 4-4" />
-            </svg>
-          </div>
-          <h3>Technische Checks</h3>
-          <p>Regelmäßige Performance- und Security-Checks sorgen für stabilen Betrieb.</p>
-        </div>
+nav.active {
+  transform: translateX(0);
+}
 
-      </div>
-    </div>
-  </section>
+nav a {
+  display: block;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
 
-</main>
+nav a:hover,
+nav a.active {
+  background: var(--color-off-white);
+  color: var(--color-primary);
+}
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-grid">
+/* ---------- Main Content ---------- */
+main {
+  flex: 1;
+}
 
-      <div class="footer-brand">
-        <span class="logo">Webstudio <span>pm</span></span>
-        <p>Professionelle Webseiten-Erstellung und Hosting. Modern, sicher und rechtlich abgesichert.</p>
-      </div>
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-white);
+  padding: var(--spacing-2xl) var(--container-padding);
+  text-align: center;
+}
 
-      <div class="footer-links">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="/index.html">Startseite</a></li>
-          <li><a href="/webseite-erstellen.html">Leistungen</a></li>
-          <li><a href="/gastro-fair-one.html">Gastro Fair One</a></li>
-          <li><a href="/contact.html">Kontakt</a></li>
-        </ul>
-      </div>
+.page-header h1 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-sm);
+}
 
-      <div class="footer-links">
-        <h4>Rechtliches</h4>
-        <ul>
-          <li><a href="/impressum.html">Impressum</a></li>
-          <li><a href="/datenschutz.html">Datenschutz</a></li>
-        </ul>
-      </div>
+.page-header p {
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: var(--font-size-base);
+}
 
-    </div>
+/* ---------- Hero Section ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--color-dark) 0%, #1e293b 100%);
+  color: var(--color-white);
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-2xl) var(--container-padding);
+}
 
-    <div class="footer-bottom">
-      <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
-      <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
-    </div>
-  </div>
-</footer>
+.hero-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
 
-<script src="script.js"></script>
+.hero-content {
+  text-align: center;
+}
 
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+.hero-content h1 {
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+}
 
-<script>
-(function () {
-  const canvas = document.getElementById("cubes-canvas");
-  if (!canvas) return;
+.hero-content h1 em {
+  color: var(--color-primary-light);
+  font-style: normal;
+}
 
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: true
-  });
+.hero-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-lg);
+}
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.setClearColor(0x000000, 0);
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  const scene = new THREE.Scene();
+.hero-graphic {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+}
 
-  const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
-  camera.position.set(0, 0, 7);
-  camera.lookAt(0, 0, 0);
+#cubes-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.55);
-  scene.add(ambient);
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  min-height: 48px;
+  min-width: 140px;
+}
 
-  const key = new THREE.DirectionalLight(0xffffff, 0.9);
-  key.position.set(4, 6, 8);
-  scene.add(key);
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
 
-  const fill = new THREE.DirectionalLight(0xffffff, 0.35);
-  fill.position.set(-6, -2, 6);
-  scene.add(fill);
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
 
-  const COLOR_MIDDLE = 0x2563eb;
-  const COLOR_TOP    = 0x1d4ed8;
-  const COLOR_BOTTOM = 0x60a5fa;
+.btn-secondary {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--color-white);
+}
 
-  function makeGeometry(size) {
-    if (THREE.RoundedBoxGeometry) {
-      return new THREE.RoundedBoxGeometry(size, size, size, 8, size * 0.12);
-    }
-    return new THREE.BoxGeometry(size, size, size);
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* ---------- Sections ---------- */
+section {
+  padding: var(--spacing-2xl) 0;
+}
+
+.section-container,
+.content-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-header p {
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content-section {
+  padding: var(--spacing-2xl) 0;
+}
+
+/* ---------- Service Cards ---------- */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.service-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card p {
+  color: var(--color-text-light);
+  margin-bottom: 0;
+  font-size: var(--font-size-sm);
+}
+
+/* Service Icons */
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  color: var(--color-white);
+}
+
+.service-icon--svg .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.service-icon--num {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+/* ---------- Contact Section ---------- */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.contact-info h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-details {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-off-white);
+  color: var(--color-primary);
+}
+
+.contact-icon .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.contact-form {
+  background: var(--color-off-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  min-height: 400px;
+}
+
+.contact-form iframe {
+  width: 100%;
+  border: none;
+}
+
+/* ---------- Info Box ---------- */
+.info-box {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+.info-box p {
+  margin-bottom: 0;
+}
+
+/* ---------- Check List ---------- */
+.check-list {
+  list-style: none;
+  margin: var(--spacing-lg) 0;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ---------- Pricing Card ---------- */
+.pricing-card {
+  background: linear-gradient(135deg, var(--color-dark) 0%, #1e293b 100%);
+  color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  margin: var(--spacing-xl) 0;
+}
+
+.pricing-card h3 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.pricing-card .price {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.pricing-card .price span {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--color-dark);
+  color: rgba(255, 255, 255, 0.8);
+  padding: var(--spacing-2xl) 0 var(--spacing-lg);
+}
+
+.footer-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.footer-brand .logo {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-white);
+}
+
+.footer-brand p {
+  font-size: var(--font-size-sm);
+  margin-bottom: 0;
+}
+
+.footer-links h4 {
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--font-size-sm);
+}
+
+.footer-links a:hover {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-lg);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.footer-bottom p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-bottom a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom a:hover {
+  color: var(--color-white);
+}
+
+/* ---------- Utility Classes ---------- */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: var(--spacing-xl);
+}
+
+/* ---------- Animations ---------- */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.delay-1 {
+  animation-delay: 0.15s;
+}
+
+.delay-2 {
+  animation-delay: 0.3s;
+}
+
+.delay-3 {
+  animation-delay: 0.45s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  function solidMaterial(color) {
-    return new THREE.MeshLambertMaterial({ color });
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  function addEdges(mesh) {
-    const edges = new THREE.EdgesGeometry(mesh.geometry, 28);
-    const mat = new THREE.LineBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.18
-    });
-    const lines = new THREE.LineSegments(edges, mat);
-    lines.renderOrder = 999;
-    mesh.add(lines);
+/* ============================================
+   TABLET BREAKPOINT (768px+)
+   ============================================ */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 1.5rem;
   }
-
-  function createCube(size, color) {
-    const geo = makeGeometry(size);
-    const cube = new THREE.Mesh(geo, solidMaterial(color));
-    addEdges(cube);
-    return cube;
+  
+  /* Typography */
+  h1 {
+    font-size: var(--font-size-3xl);
   }
-
-  const group = new THREE.Group();
-  scene.add(group);
-
-  const cube1 = createCube(1.45, COLOR_MIDDLE);
-  cube1.position.set(0, 0, -0.25);
-  group.add(cube1);
-
-  const cube2 = createCube(0.95, COLOR_TOP);
-  cube2.position.set(-1.55, 1.05, 0.85);
-  group.add(cube2);
-
-  const cube3 = createCube(0.95, COLOR_BOTTOM);
-  cube3.position.set(1.55, -1.05, 0.85);
-  group.add(cube3);
-
-  cube1.rotation.set(-0.25, 0.35, 0.05);
-  cube2.rotation.set(0.18, -0.25, 0.12);
-  cube3.rotation.set(-0.12, 0.22, -0.08);
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    const w = rect.width;
-    const h = rect.height;
-
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
+  
+  h2 {
+    font-size: var(--font-size-2xl);
   }
-
-  resize();
-  window.addEventListener("resize", resize);
-
-  let t = 0;
-
-  function animate() {
-    requestAnimationFrame(animate);
-
-    if (!prefersReducedMotion) {
-      t += 0.012;
-
-      group.rotation.y += 0.006;
-      group.rotation.x = Math.sin(t * 0.35) * 0.08;
-
-      cube2.position.y = 1.05 + Math.sin(t * 0.8) * 0.05;
-      cube3.position.y = -1.05 + Math.cos(t * 0.8) * 0.05;
-
-      /* ✅ MITTEL: langsamer + vertikal drehen */
-      cube1.rotation.y += 0.0025;
-      cube1.rotation.x += 0.0017;
-
-      /* ✅ OBEN: schnell + vertikal drehen */
-      cube2.rotation.y -= 0.005;
-      cube2.rotation.x += 0.0045;
-
-      /* ✅ UNTEN: schnell + vertikal drehen */
-      cube3.rotation.y += 0.005;
-      cube3.rotation.x -= 0.0036;
-    }
-
-    renderer.render(scene, camera);
+  
+  /* Header */
+  .header-container {
+    padding: var(--spacing-md) var(--container-padding);
   }
+  
+  /* Navigation - Tablet (still mobile menu but better spacing) */
+  nav {
+    padding: var(--spacing-2xl);
+  }
+  
+  nav a {
+    padding: var(--spacing-lg);
+    font-size: var(--font-size-xl);
+  }
+  
+  /* Hero */
+  .hero {
+    padding: var(--spacing-3xl) var(--container-padding);
+  }
+  
+  .hero-content h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-content p {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-graphic {
+    max-width: 350px;
+  }
+  
+  /* Buttons */
+  .btn-group {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Contact */
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+  
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+  
+  /* Page Header */
+  .page-header {
+    padding: var(--spacing-3xl) var(--container-padding);
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+}
 
-  animate();
-})();
-</script>
+/* ============================================
+   DESKTOP BREAKPOINT (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 2rem;
+  }
+  
+  /* Typography */
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  /* Header */
+  .menu-toggle {
+    display: none;
+  }
+  
+  nav {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    gap: var(--spacing-xs);
+    transform: none;
+    background: transparent;
+  }
+  
+  nav a {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-base);
+    border-radius: var(--radius-md);
+  }
+  
+  nav a:hover,
+  nav a.active {
+    background: var(--color-off-white);
+  }
+  
+  /* Hero */
+  .hero-container {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-3xl);
+  }
+  
+  .hero-content {
+    text-align: left;
+    flex: 1;
+  }
+  
+  .hero-content h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .hero-visual {
+    flex: 1;
+    max-width: 450px;
+  }
+  
+  .hero-graphic {
+    max-width: 100%;
+  }
+  
+  .btn-group {
+    justify-content: flex-start;
+  }
+  
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+  
+  /* Sections */
+  section {
+    padding: var(--spacing-3xl) 0;
+  }
+  
+  /* Page Header */
+  .page-header h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .page-header p {
+    font-size: var(--font-size-lg);
+  }
+}
 
-</body>
-</html>
+/* ============================================
+   LARGE DESKTOP (1280px+)
+   ============================================ */
+@media (min-width: 1280px) {
+  :root {
+    --container-max: 1280px;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-visual {
+    max-width: 500px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Focus Styles */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Touch Target Sizes */
+@media (pointer: coarse) {
+  .btn,
+  nav a,
+  .footer-links a {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
