@@ -1,744 +1,336 @@
-/* Webstudio PM - Clean Professional Design (NORMAL LAYOUT + SVG ICON FIX) */
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-
-:root {
-  --color-white: #ffffff;
-  --color-off-white: #fafafa;
-  --color-light-gray: #f5f5f5;
-  --color-medium-gray: #e0e0e0;
-
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #6b7280;
-
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-accent-light: #eff6ff;
-
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-elevated: 0 10px 40px rgba(0, 0, 0, 0.08);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--color-text-primary);
-  background-color: var(--color-white);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Typography */
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-h1 {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  margin-bottom: 1.2rem;
-}
-
-h2 {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  margin-bottom: 1.1rem;
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  margin-bottom: 0.85rem;
-}
-
-p {
-  margin-bottom: 1rem;
-  color: var(--color-text-secondary);
-}
-
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: var(--transition-smooth);
-}
-
-a:hover {
-  color: var(--color-accent-hover);
-}
-
-/* Header */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-light-gray);
-  z-index: 1000;
-  transition: var(--transition-smooth);
-}
-
-header.scrolled { box-shadow: var(--shadow-subtle); }
-
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-text-primary);
-  letter-spacing: -0.03em;
-}
-
-.logo span { color: var(--color-accent); }
-
-/* Navigation */
-nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-nav a {
-  color: var(--color-text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  position: relative;
-  padding: 0.25rem 0;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--color-accent);
-  transition: var(--transition-smooth);
-}
-
-nav a:hover { color: var(--color-text-primary); }
-nav a:hover::after { width: 100%; }
-nav a.active { color: var(--color-text-primary); }
-nav a.active::after { width: 100%; }
-
-/* Mobile Menu Toggle */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 0.5rem;
-  background: none;
-  border: none;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-text-primary);
-  transition: var(--transition-smooth);
-}
-
-/* Main Content */
-main { padding-top: 80px; }
-
-/* Hero Section */
-.hero {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(180deg, var(--color-off-white) 0%, var(--color-white) 100%);
-}
-
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.hero-content h1 { color: var(--color-text-primary); }
-
-.hero-content h1 em {
-  font-style: italic;
-  color: var(--color-accent);
-}
-
-.hero-content p {
-  font-size: 1.125rem;
-  max-width: 480px;
-}
-
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
-
-.btn-primary:hover {
-  background: var(--color-accent-hover);
-  color: var(--color-white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-medium-gray);
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.btn-group {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-/* Sections */
-section { padding: 5rem 2rem; }
-
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 3rem;
-}
-
-.section-header p { font-size: 1rem; }
-
-/* Service Cards */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-light-gray);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: var(--transition-smooth);
-}
-
-.service-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-4px);
-}
-
-.service-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--color-accent-light);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-/* ✅ SVG Icons (clean + stable) */
-.service-icon--svg {
-  color: var(--color-accent);
-}
-.service-icon--svg .icon,
-.service-icon--svg svg {
-  width: 22px;
-  height: 22px;
-  display: block;
-  stroke: currentColor;
-  fill: none;
-}
-
-/* ✅ FALLBACK ICONS NUR WENN KEIN SVG (wichtig) */
-.service-icon:not(.service-icon--svg).service-icon--design::before {
-  content: '';
-  width: 20px;
-  height: 8px;
-  background: var(--color-accent);
-  border-radius: 2px;
-  position: absolute;
-  transform: rotate(-45deg);
-}
-.service-icon:not(.service-icon--svg).service-icon--design::after {
-  content: '';
-  width: 8px;
-  height: 14px;
-  background: var(--color-accent-hover);
-  border-radius: 0 0 4px 4px;
-  position: absolute;
-  transform: rotate(-45deg) translate(10px, 2px);
-}
-
-.service-icon:not(.service-icon--svg).service-icon--cloud::before {
-  content: '';
-  width: 24px;
-  height: 12px;
-  background: var(--color-accent);
-  border-radius: 12px 12px 0 0;
-  position: absolute;
-  top: 14px;
-}
-.service-icon:not(.service-icon--svg).service-icon--cloud::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  box-shadow: 12px 2px 0 0 var(--color-accent);
-}
-
-.service-icon:not(.service-icon--svg).service-icon--seo::before {
-  content: '';
-  width: 6px;
-  height: 10px;
-  background: var(--color-accent);
-  position: absolute;
-  bottom: 14px;
-  left: 12px;
-  box-shadow: 9px -4px 0 0 var(--color-accent), 18px -10px 0 0 var(--color-accent);
-}
-.service-icon:not(.service-icon--svg).service-icon--seo::after {
-  content: '';
-  width: 16px;
-  height: 2px;
-  background: var(--color-accent-hover);
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  transform: rotate(-35deg) translate(6px, -12px);
-}
-
-.service-icon:not(.service-icon--svg).service-icon--lock::before {
-  content: '';
-  width: 16px;
-  height: 12px;
-  background: var(--color-accent);
-  border-radius: 3px;
-  position: absolute;
-  top: 22px;
-}
-.service-icon:not(.service-icon--svg).service-icon--lock::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border: 3px solid var(--color-accent);
-  border-radius: 50%;
-  border-bottom: none;
-  position: absolute;
-  top: 12px;
-}
-
-.service-icon:not(.service-icon--svg).service-icon--update::before,
-.service-icon:not(.service-icon--svg).service-icon--update::after {
-  content: '';
-  width: 16px;
-  height: 16px;
-  border: 3px solid var(--color-accent);
-  border-radius: 50%;
-  position: absolute;
-}
-.service-icon:not(.service-icon--svg).service-icon--update::before {
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  transform: rotate(-45deg);
-}
-.service-icon:not(.service-icon--svg).service-icon--update::after {
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-radius: 0;
-  border-left: 6px solid var(--color-accent);
-  top: 10px;
-  right: 12px;
-}
-
-.service-icon:not(.service-icon--svg).service-icon--shield::before {
-  content: '';
-  width: 18px;
-  height: 20px;
-  background: var(--color-accent);
-  clip-path: polygon(50% 0%, 100% 20%, 100% 60%, 50% 100%, 0% 60%, 0% 20%);
-  position: absolute;
-}
-.service-icon:not(.service-icon--svg).service-icon--shield::after {
-  content: '';
-  width: 6px;
-  height: 10px;
-  border-right: 3px solid var(--color-accent-light);
-  border-bottom: 3px solid var(--color-accent-light);
-  position: absolute;
-  transform: rotate(45deg);
-  top: 15px;
-}
-
-.service-card h3 { color: var(--color-text-primary); }
-
-.service-card p {
-  font-size: 0.95rem;
-  margin-bottom: 0;
-}
-
-/* Page Header */
-.page-header {
-  background: var(--color-off-white);
-  padding: 6rem 2rem 4rem;
-  text-align: center;
-}
-
-.page-header h1 { margin-bottom: 1rem; }
-
-.page-header p {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.125rem;
-}
-
-/* Contact Section */
-.contact-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.contact-info h2 { margin-bottom: 1.5rem; }
-
-.contact-details { margin-top: 2rem; }
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--color-light-gray);
-}
-
-.contact-item:last-child { border-bottom: none; }
-
-.contact-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--color-accent-light);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-accent);
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-}
-
-/* ✅ Contact SVG */
-.contact-icon--svg .icon,
-.contact-icon--svg svg {
-  width: 20px;
-  height: 20px;
-  display: block;
-  stroke: currentColor;
-  fill: none;
-}
-
-/* ✅ Contact fallback nur wenn KEIN SVG */
-.contact-icon:not(.contact-icon--svg).contact-icon--email::before,
-.contact-icon:not(.contact-icon--svg).contact-icon--email::after {
-  content: '';
-  position: absolute;
-}
-.contact-icon:not(.contact-icon--svg).contact-icon--email::before {
-  width: 18px;
-  height: 12px;
-  border: 2px solid var(--color-accent);
-  border-radius: 2px;
-}
-.contact-icon:not(.contact-icon--svg).contact-icon--email::after {
-  width: 12px;
-  height: 12px;
-  border-top: 2px solid var(--color-accent);
-  border-right: 2px solid var(--color-accent);
-  transform: rotate(-45deg) translateY(3px);
-}
-
-.contact-icon:not(.contact-icon--svg).contact-icon--location::before,
-.contact-icon:not(.contact-icon--svg).contact-icon--location::after {
-  content: '';
-  position: absolute;
-}
-.contact-icon:not(.contact-icon--svg).contact-icon--location::before {
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--color-accent);
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  top: 8px;
-}
-.contact-icon:not(.contact-icon--svg).contact-icon--location::after {
-  width: 6px;
-  height: 6px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  top: 12px;
-}
-
-.contact-icon:not(.contact-icon--svg).contact-icon--time::before,
-.contact-icon:not(.contact-icon--svg).contact-icon--time::after {
-  content: '';
-  position: absolute;
-}
-.contact-icon:not(.contact-icon--svg).contact-icon--time::before {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--color-accent);
-  border-radius: 50%;
-}
-.contact-icon:not(.contact-icon--svg).contact-icon--time::after {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 7px solid var(--color-accent);
-  transform: rotate(45deg);
-  top: 10px;
-  left: 14px;
-}
-
-.contact-form {
-  background: var(--color-off-white);
-  padding: 2.5rem;
-  border-radius: 20px;
-}
-
-/* Footer */
-footer {
-  background: var(--color-text-primary);
-  color: var(--color-white);
-  padding: 4rem 2rem 2rem;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 3rem;
-}
-
-.footer-brand .logo {
-  color: var(--color-white);
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.footer-brand p {
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 300px;
-}
-
-.footer-links h4 {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1.5rem;
-  color: var(--color-white);
-}
-
-.footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 0.75rem; }
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.95rem;
-}
-
-.footer-links a:hover { color: var(--color-white); }
-
-.footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-bottom p {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.875rem;
-  margin-bottom: 0;
-}
-
-.footer-bottom a { color: rgba(255, 255, 255, 0.4); }
-.footer-bottom a:hover { color: var(--color-white); }
-
-/* Responsive */
-@media (max-width: 968px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Webstudio PM – Professionelle Webseiten-Erstellung und Hosting. SEO-optimierte Websites mit Cloudflare-Hosting, monatlichen Updates und rechtlicher Absicherung.">
+  <meta name="keywords" content="Webdesign, Webentwicklung, Hosting, SEO, Cloudflare, professionelle Webseiten">
+  <meta name="author" content="Webstudio PM">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Webstudio PM – Professionelle Webseiten">
+  <meta property="og:description" content="Wir erstellen und hosten professionelle, SEO-optimierte Webseiten für Ihr Unternehmen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://webstudio-pm.de">
+
+  <link rel="canonical" href="https://webstudio-pm.de">
+  <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <a href="/index.html" class="logo">Webstudio <span>pm</span></a>
+
+    <button class="menu-toggle" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav>
+      <a href="/index.html" class="active">Startseite</a>
+      <a href="/webseite-erstellen.html">Leistungen</a>
+      <a href="/gastro-fair-one.html">Gastro Fair One</a>
+      <a href="/contact.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-container">
+
+      <div class="hero-content">
+        <h1 class="fade-in">Ihre Webseite, <em>professionell</em> umgesetzt</h1>
+
+        <p class="fade-in delay-1">
+          Wir erstellen moderne, SEO-optimierte Webseiten, die Ihr Unternehmen perfekt repräsentieren.
+          Inklusive zuverlässigem Hosting und kontinuierlicher Pflege.
+        </p>
+
+        <div class="btn-group fade-in delay-2">
+          <a href="/contact.html" class="btn btn-primary">Projekt starten</a>
+          <a href="/webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-in delay-3">
+        <div class="hero-graphic">
+          <canvas id="cubes-canvas"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="section-container">
+
+      <div class="section-header">
+        <h2>Unsere Leistungen</h2>
+        <p>Von der Konzeption bis zum laufenden Betrieb – wir begleiten Sie bei jedem Schritt zu Ihrer perfekten Webpräsenz.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon service-icon--design service-icon--svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+            </svg>
+          </div>
+          <h3>Webdesign & Entwicklung</h3>
+          <p>Individuelle Webseiten, modern gestaltet und auf allen Geräten perfekt. Responsive Design ist Standard.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--cloud service-icon--svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 17.5a4.5 4.5 0 0 0-1.7-8.6A6 6 0 0 0 6.2 9.8" />
+              <path d="M6 17.5a4.5 4.5 0 0 1 .3-9" />
+              <path d="M8 17.5h12" />
+            </svg>
+          </div>
+          <h3>Cloudflare Hosting</h3>
+          <p>Schnell, sicher und global verfügbar. Mit DDoS-Schutz und Top-Ladezeiten über Cloudflare.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--seo service-icon--svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
+              <path d="M21 21l-4.35-4.35" />
+              <path d="M10 8v4l3 2" />
+            </svg>
+          </div>
+          <h3>SEO-Optimierung</h3>
+          <p>Technisches SEO, saubere Struktur und schnelle Performance – von Anfang an sauber gebaut.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--lock service-icon--svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+              <path d="M6 11h12v10H6z" />
+              <path d="M12 15v3" />
+            </svg>
+          </div>
+          <h3>Rechtliche Sicherheit</h3>
+          <p>Impressum und Datenschutzerklärung werden erstellt und gepflegt – rechtlich sauber und aktuell.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--update service-icon--svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-3-6.7" />
+              <path d="M21 3v6h-6" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+          </div>
+          <h3>Monatliche Updates</h3>
+          <p>Wartung, Inhalte, technische Checks – damit die Seite nicht nach 2 Monaten wieder alt wirkt.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--shield service-icon--svg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
+          <h3>Technische Checks</h3>
+          <p>Regelmäßige Performance- und Security-Checks sorgen für stabilen Betrieb.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <span class="logo">Webstudio <span>pm</span></span>
+        <p>Professionelle Webseiten-Erstellung und Hosting. Modern, sicher und rechtlich abgesichert.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="/index.html">Startseite</a></li>
+          <li><a href="/webseite-erstellen.html">Leistungen</a></li>
+          <li><a href="/gastro-fair-one.html">Gastro Fair One</a></li>
+          <li><a href="/contact.html">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="/impressum.html">Impressum</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
+      <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+
+<script>
+(function () {
+  const canvas = document.getElementById("cubes-canvas");
+  if (!canvas) return;
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true
+  });
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+
+  const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
+  camera.position.set(0, 0, 7);
+  camera.lookAt(0, 0, 0);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+  scene.add(ambient);
+
+  const key = new THREE.DirectionalLight(0xffffff, 0.9);
+  key.position.set(4, 6, 8);
+  scene.add(key);
+
+  const fill = new THREE.DirectionalLight(0xffffff, 0.35);
+  fill.position.set(-6, -2, 6);
+  scene.add(fill);
+
+  const COLOR_MIDDLE = 0x2563eb;
+  const COLOR_TOP    = 0x1d4ed8;
+  const COLOR_BOTTOM = 0x60a5fa;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function makeGeometry(size) {
+    if (THREE.RoundedBoxGeometry) {
+      return new THREE.RoundedBoxGeometry(size, size, size, 8, size * 0.12);
+    }
+    return new THREE.BoxGeometry(size, size, size);
   }
 
-  .hero-content p { margin: 0 auto; }
-  .btn-group { justify-content: center; }
-  .contact-section { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-  .header-container { padding: 1rem; }
-
-  nav {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: var(--color-white);
-    flex-direction: column;
-    padding: 2rem;
-    gap: 1rem;
-    border-bottom: 1px solid var(--color-light-gray);
-    transform: translateY(-150%);
-    opacity: 0;
-    transition: var(--transition-smooth);
+  function solidMaterial(color) {
+    return new THREE.MeshLambertMaterial({ color });
   }
 
-  nav.active {
-    transform: translateY(0);
-    opacity: 1;
+  function addEdges(mesh) {
+    const edges = new THREE.EdgesGeometry(mesh.geometry, 28);
+    const mat = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.18
+    });
+    const lines = new THREE.LineSegments(edges, mat);
+    lines.renderOrder = 999;
+    mesh.add(lines);
   }
 
-  .menu-toggle { display: flex; }
-
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .menu-toggle.active span:nth-child(2) { opacity: 0; }
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  function createCube(size, color) {
+    const geo = makeGeometry(size);
+    const cube = new THREE.Mesh(geo, solidMaterial(color));
+    addEdges(cube);
+    return cube;
   }
 
-  section { padding: 3rem 1rem; }
-  .hero { padding: 3rem 1rem; }
+  const group = new THREE.Group();
+  scene.add(group);
 
-  .services-grid { grid-template-columns: 1fr; }
+  const cube1 = createCube(1.45, COLOR_MIDDLE);
+  cube1.position.set(0, 0, -0.25);
+  group.add(cube1);
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  const cube2 = createCube(0.95, COLOR_TOP);
+  cube2.position.set(-1.55, 1.05, 0.85);
+  group.add(cube2);
+
+  const cube3 = createCube(0.95, COLOR_BOTTOM);
+  cube3.position.set(1.55, -1.05, 0.85);
+  group.add(cube3);
+
+  cube1.rotation.set(-0.25, 0.35, 0.05);
+  cube2.rotation.set(0.18, -0.25, 0.12);
+  cube3.rotation.set(-0.12, 0.22, -0.08);
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+  resize();
+  window.addEventListener("resize", resize);
+
+  let t = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (!prefersReducedMotion) {
+      t += 0.012;
+
+      group.rotation.y += 0.006;
+      group.rotation.x = Math.sin(t * 0.35) * 0.08;
+
+      cube2.position.y = 1.05 + Math.sin(t * 0.8) * 0.05;
+      cube3.position.y = -1.05 + Math.cos(t * 0.8) * 0.05;
+
+      /* ✅ MITTEL: langsamer + vertikal drehen */
+      cube1.rotation.y += 0.0025;
+      cube1.rotation.x += 0.0017;
+
+      /* ✅ OBEN: schnell + vertikal drehen */
+      cube2.rotation.y -= 0.005;
+      cube2.rotation.x += 0.0045;
+
+      /* ✅ UNTEN: schnell + vertikal drehen */
+      cube3.rotation.y += 0.005;
+      cube3.rotation.x -= 0.0036;
+    }
+
+    renderer.render(scene, camera);
   }
 
-  .contact-form {
-    padding: 1.5rem;
-  }
-}
+  animate();
+})();
+</script>
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Animations */
-.fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
-
-/* Utility */
-.text-center { text-align: center; }
-.mt-2 { margin-top: 2rem; }
-.mb-2 { margin-bottom: 2rem; }
+</body>
+</html>
