@@ -375,6 +375,16 @@ section {
   padding: 0 var(--container-padding);
 }
 
+.content-container h3 {
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.content-container h3:first-child {
+  margin-top: 0;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: var(--spacing-xl);
@@ -437,6 +447,18 @@ section {
   color: var(--color-white);
 }
 
+.service-icon .icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-white);
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-white);
+}
+
 .service-icon--svg .icon {
   width: 24px;
   height: 24px;
@@ -445,6 +467,7 @@ section {
 .service-icon--num {
   font-size: var(--font-size-xl);
   font-weight: 700;
+  color: var(--color-white);
 }
 
 /* ---------- Contact Section ---------- */
@@ -472,31 +495,49 @@ section {
 }
 
 .contact-icon {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-off-white);
-  color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  color: var(--color-white);
 }
 
 .contact-icon .icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-white);
+}
+
+.contact-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-white);
 }
 
 .contact-item strong {
   display: block;
   margin-bottom: 0.25rem;
+  color: var(--color-text);
+}
+
+.contact-item > div {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.contact-item a {
+  color: var(--color-primary);
+  word-break: break-word;
 }
 
 .contact-form {
   background: var(--color-off-white);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   min-height: 400px;
 }
 
@@ -510,32 +551,43 @@ section {
   background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
   border-left: 4px solid var(--color-primary);
   border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   margin: var(--spacing-lg) 0;
 }
 
 .info-box p {
   margin-bottom: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.info-box strong {
+  color: var(--color-text);
 }
 
 /* ---------- Check List ---------- */
 .check-list {
   list-style: none;
-  margin: var(--spacing-lg) 0;
+  margin: var(--spacing-md) 0 var(--spacing-lg) 0;
+  padding: 0;
 }
 
 .check-list li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.75rem;
   margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
 }
 
 .check-list li::before {
   content: '✓';
   position: absolute;
   left: 0;
+  top: 0;
   color: var(--color-primary);
   font-weight: 700;
+  font-size: var(--font-size-base);
 }
 
 /* ---------- Pricing Card ---------- */
@@ -543,26 +595,37 @@ section {
   background: linear-gradient(135deg, var(--color-dark) 0%, #1e293b 100%);
   color: var(--color-white);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   text-align: center;
   margin: var(--spacing-xl) 0;
 }
 
 .pricing-card h3 {
   color: var(--color-white);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
 }
 
 .pricing-card .price {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: 700;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .pricing-card .price span {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: 400;
   opacity: 0.7;
+}
+
+.pricing-card > p {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+.pricing-card .btn {
+  margin-top: var(--spacing-lg);
 }
 
 /* ---------- Footer ---------- */
@@ -742,6 +805,10 @@ footer {
     gap: var(--spacing-2xl);
   }
   
+  .contact-form {
+    padding: var(--spacing-lg);
+  }
+  
   /* Footer */
   .footer-grid {
     grid-template-columns: 2fr 1fr 1fr;
@@ -754,6 +821,33 @@ footer {
   
   .page-header h1 {
     font-size: var(--font-size-3xl);
+  }
+  
+  /* Info Box & Pricing Card */
+  .info-box {
+    padding: var(--spacing-lg);
+  }
+  
+  .info-box p {
+    font-size: var(--font-size-base);
+  }
+  
+  .pricing-card {
+    padding: var(--spacing-xl);
+  }
+  
+  .pricing-card h3 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .pricing-card .price {
+    font-size: var(--font-size-2xl);
+  }
+  
+  /* Check List */
+  .check-list li {
+    font-size: var(--font-size-base);
+    padding-left: 2rem;
   }
 }
 
