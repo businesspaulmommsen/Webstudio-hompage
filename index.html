@@ -1,554 +1,402 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Webstudio PM – Professionelle Webseiten-Erstellung und Hosting. SEO-optimierte Websites mit Cloudflare-Hosting, monatlichen Updates und rechtlicher Absicherung.">
-    <meta name="keywords" content="Webdesign, Webentwicklung, Hosting, SEO, Cloudflare, professionelle Webseiten">
-    <meta name="author" content="Webstudio PM">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Webstudio PM – Professionelle Webseiten">
-    <meta property="og:description" content="Wir erstellen und hosten professionelle, SEO-optimierte Webseiten für Ihr Unternehmen.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://webstudio-pm.de">
-    <link rel="canonical" href="https://webstudio-pm.de">
-    <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .hero-graphic {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1;
-            background: var(--color-light-gray);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: visible;
-            animation: morphShape 8s ease-in-out infinite;
-            border-radius: 50%;
-            box-shadow: 
-                inset 0 0 60px rgba(37, 99, 235, 0.08),
-                inset 0 0 120px rgba(37, 99, 235, 0.05);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Webstudio PM – Professionelle Webseiten-Erstellung und Hosting. SEO-optimierte Websites mit Cloudflare-Hosting, monatlichen Updates und rechtlicher Absicherung.">
+  <meta name="keywords" content="Webdesign, Webentwicklung, Hosting, SEO, Cloudflare, professionelle Webseiten">
+  <meta name="author" content="Webstudio PM">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Webstudio PM – Professionelle Webseiten">
+  <meta property="og:description" content="Wir erstellen und hosten professionelle, SEO-optimierte Webseiten für Ihr Unternehmen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://webstudio-pm.de">
+  <link rel="canonical" href="https://webstudio-pm.de">
+  <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
 
-        @keyframes morphShape {
-            0%, 100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
-            12.5% { border-radius: 48% 52% 52% 48% / 52% 48% 52% 48%; }
-            25% { border-radius: 50% 50% 48% 52% / 48% 52% 50% 50%; }
-            37.5% { border-radius: 52% 48% 50% 50% / 50% 50% 48% 52%; }
-            50% { border-radius: 48% 52% 52% 48% / 48% 52% 52% 48%; }
-            62.5% { border-radius: 50% 50% 50% 50% / 52% 48% 48% 52%; }
-            75% { border-radius: 52% 48% 48% 52% / 50% 50% 50% 50%; }
-            87.5% { border-radius: 50% 50% 52% 48% / 48% 52% 48% 52%; }
-        }
+  <link rel="stylesheet" href="style.css">
 
-        .hero-graphic::before {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 60%;
-            background: var(--color-accent-light);
-            border-radius: 50%;
-            animation: pulseGlowInner 4s ease-in-out infinite;
-            box-shadow: 
-                0 0 40px rgba(37, 99, 235, 0.3),
-                0 0 80px rgba(37, 99, 235, 0.2),
-                inset 0 0 30px rgba(37, 99, 235, 0.15);
-        }
+  <style>
+    .hero-graphic {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1;
+      background: var(--color-light-gray);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: visible;
+      animation: morphShape 8s ease-in-out infinite;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 0 60px rgba(37, 99, 235, 0.08),
+        inset 0 0 120px rgba(37, 99, 235, 0.05);
+    }
 
-        @keyframes pulseGlowInner {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 0.5;
-            }
-            50% { 
-                transform: scale(1.15); 
-                opacity: 0.85;
-            }
-        }
+    @keyframes morphShape {
+      0%, 100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+      12.5% { border-radius: 48% 52% 52% 48% / 52% 48% 52% 48%; }
+      25% { border-radius: 50% 50% 48% 52% / 48% 52% 50% 50%; }
+      37.5% { border-radius: 52% 48% 50% 50% / 50% 50% 48% 52%; }
+      50% { border-radius: 48% 52% 52% 48% / 48% 52% 52% 48%; }
+      62.5% { border-radius: 50% 50% 50% 50% / 52% 48% 48% 52%; }
+      75% { border-radius: 52% 48% 48% 52% / 50% 50% 50% 50%; }
+      87.5% { border-radius: 50% 50% 52% 48% / 48% 52% 48% 52%; }
+    }
 
-        .hero-graphic::after {
-            display: none;
-        }
+    .hero-graphic::before {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      background: var(--color-accent-light);
+      border-radius: 50%;
+      animation: pulseGlowInner 4s ease-in-out infinite;
+      box-shadow:
+        0 0 40px rgba(37, 99, 235, 0.3),
+        0 0 80px rgba(37, 99, 235, 0.2),
+        inset 0 0 30px rgba(37, 99, 235, 0.15);
+    }
 
-        .cubes-container {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            z-index: 1;
-            /* Hardware-Beschleunigung erzwingen */
-            transform: translateZ(0);
-            will-change: transform;
-        }
+    @keyframes pulseGlowInner {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.15);
+        opacity: 0.85;
+      }
+    }
 
-        .cube-wrapper {
-            position: absolute;
-            /* Höhere Perspektive für weniger Verzerrung */
-            perspective: 600px;
-            /* Hardware-Beschleunigung */
-            transform: translateZ(0);
-            will-change: transform;
-        }
+    .hero-graphic::after {
+      display: none;
+    }
 
-        .cube-wrapper--1 {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateZ(0);
-            z-index: 3;
-            filter: drop-shadow(0 20px 25px rgba(30, 64, 175, 0.35));
-        }
+    #cubes-canvas {
+      position: relative;
+      z-index: 1;
+      width: 220px;
+      height: 220px;
+    }
 
-        .cube-wrapper--2 {
-            top: 0;
-            left: 0;
-            z-index: 2;
-            filter: drop-shadow(0 15px 20px rgba(30, 64, 175, 0.3));
-        }
+    @media (max-width: 768px) {
+      .hero-graphic { max-width: 280px; }
+      #cubes-canvas { width: 160px; height: 160px; }
+    }
 
-        .cube-wrapper--3 {
-            bottom: 0;
-            right: 0;
-            z-index: 1;
-            filter: drop-shadow(0 15px 20px rgba(37, 99, 235, 0.25));
-        }
+    @media (max-width: 480px) {
+      .hero-graphic { max-width: 220px; }
+      #cubes-canvas { width: 130px; height: 130px; }
+    }
 
-        .cube {
-            position: relative;
-            transform-style: preserve-3d;
-            /* Hardware-Beschleunigung */
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .cube--1 {
-            width: 70px;
-            height: 70px;
-            animation: rotateCube1 28s linear infinite;
-        }
-
-        .cube--2 {
-            width: 45px;
-            height: 45px;
-            animation: rotateCube2 32s linear infinite;
-        }
-
-        .cube--3 {
-            width: 45px;
-            height: 45px;
-            animation: rotateCube3 36s linear infinite;
-        }
-
-        .cube-face {
-            position: absolute;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            transform-style: flat;
-            box-sizing: border-box;
-            /* Farbiger Border in der gleichen Farbe wie die Fläche - verhindert weiße Kanten */
-            border: 1px solid;
-            /* Leichte Skalierung nach außen um Lücken zu schließen */
-            margin: -0.5px;
-        }
-
-        /* Cube 1 - Größe 70px, halbe Größe = 35px */
-        .cube--1 .cube-face {
-            width: 71px;
-            height: 71px;
-        }
-        .cube--1 .cube-face--front  { 
-            transform: translateZ(35px); 
-            background: #3b82f6; 
-            border-color: #3b82f6;
-        }
-        .cube--1 .cube-face--back   { 
-            transform: rotateY(180deg) translateZ(35px); 
-            background: #2563eb; 
-            border-color: #2563eb;
-        }
-        .cube--1 .cube-face--right  { 
-            transform: rotateY(90deg) translateZ(35px); 
-            background: #3b82f6; 
-            border-color: #3b82f6;
-        }
-        .cube--1 .cube-face--left   { 
-            transform: rotateY(-90deg) translateZ(35px); 
-            background: #2563eb; 
-            border-color: #2563eb;
-        }
-        .cube--1 .cube-face--top    { 
-            transform: rotateX(90deg) translateZ(35px); 
-            background: #60a5fa; 
-            border-color: #60a5fa;
-        }
-        .cube--1 .cube-face--bottom { 
-            transform: rotateX(-90deg) translateZ(35px); 
-            background: #1d4ed8; 
-            border-color: #1d4ed8;
-        }
-
-        /* Cube 2 - Größe 45px */
-        .cube--2 .cube-face {
-            width: 46px;
-            height: 46px;
-        }
-        .cube--2 .cube-face--front  { 
-            transform: translateZ(22.5px); 
-            background: #2563eb; 
-            border-color: #2563eb;
-        }
-        .cube--2 .cube-face--back   { 
-            transform: rotateY(180deg) translateZ(22.5px); 
-            background: #1d4ed8; 
-            border-color: #1d4ed8;
-        }
-        .cube--2 .cube-face--right  { 
-            transform: rotateY(90deg) translateZ(22.5px); 
-            background: #2563eb; 
-            border-color: #2563eb;
-        }
-        .cube--2 .cube-face--left   { 
-            transform: rotateY(-90deg) translateZ(22.5px); 
-            background: #1d4ed8; 
-            border-color: #1d4ed8;
-        }
-        .cube--2 .cube-face--top    { 
-            transform: rotateX(90deg) translateZ(22.5px); 
-            background: #3b82f6; 
-            border-color: #3b82f6;
-        }
-        .cube--2 .cube-face--bottom { 
-            transform: rotateX(-90deg) translateZ(22.5px); 
-            background: #1e40af; 
-            border-color: #1e40af;
-        }
-
-        /* Cube 3 - Solide Farben statt Transparenz (Transparenz verstärkt Flimmern) */
-        .cube--3 .cube-face {
-            width: 46px;
-            height: 46px;
-        }
-        .cube--3 .cube-face--front  { 
-            transform: translateZ(22.5px); 
-            background: #60a5fa; 
-            border-color: #60a5fa;
-        }
-        .cube--3 .cube-face--back   { 
-            transform: rotateY(180deg) translateZ(22.5px); 
-            background: #3b82f6; 
-            border-color: #3b82f6;
-        }
-        .cube--3 .cube-face--right  { 
-            transform: rotateY(90deg) translateZ(22.5px); 
-            background: #60a5fa; 
-            border-color: #60a5fa;
-        }
-        .cube--3 .cube-face--left   { 
-            transform: rotateY(-90deg) translateZ(22.5px); 
-            background: #3b82f6; 
-            border-color: #3b82f6;
-        }
-        .cube--3 .cube-face--top    { 
-            transform: rotateX(90deg) translateZ(22.5px); 
-            background: #93c5fd; 
-            border-color: #93c5fd;
-        }
-        .cube--3 .cube-face--bottom { 
-            transform: rotateX(-90deg) translateZ(22.5px); 
-            background: #2563eb; 
-            border-color: #2563eb;
-        }
-
-        /* Sanftere Animationen ohne abrupte Übergänge */
-        @keyframes rotateCube1 {
-            0% { transform: rotateX(-15deg) rotateY(0deg); }
-            100% { transform: rotateX(-15deg) rotateY(360deg); }
-        }
-
-        @keyframes rotateCube2 {
-            0% { transform: rotateX(10deg) rotateY(30deg); }
-            100% { transform: rotateX(10deg) rotateY(390deg); }
-        }
-
-        @keyframes rotateCube3 {
-            0% { transform: rotateX(-10deg) rotateY(60deg); }
-            100% { transform: rotateX(-10deg) rotateY(-300deg); }
-        }
-
-        /* Mobile-spezifische Optimierungen */
-        @media (max-width: 768px) {
-            .hero-graphic {
-                max-width: 280px;
-            }
-            
-            .cubes-container {
-                width: 100px;
-                height: 100px;
-                transform: translateZ(0) scale(0.85);
-            }
-            
-            .cube-wrapper {
-                perspective: 400px;
-            }
-            
-            .cube--1 {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .cube--1 .cube-face {
-                width: 51px;
-                height: 51px;
-            }
-            
-            .cube--1 .cube-face--front  { transform: translateZ(25px); }
-            .cube--1 .cube-face--back   { transform: rotateY(180deg) translateZ(25px); }
-            .cube--1 .cube-face--right  { transform: rotateY(90deg) translateZ(25px); }
-            .cube--1 .cube-face--left   { transform: rotateY(-90deg) translateZ(25px); }
-            .cube--1 .cube-face--top    { transform: rotateX(90deg) translateZ(25px); }
-            .cube--1 .cube-face--bottom { transform: rotateX(-90deg) translateZ(25px); }
-            
-            .cube--2,
-            .cube--3 {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .cube--2 .cube-face,
-            .cube--3 .cube-face {
-                width: 33px;
-                height: 33px;
-            }
-            
-            .cube--2 .cube-face--front,
-            .cube--3 .cube-face--front  { transform: translateZ(16px); }
-            .cube--2 .cube-face--back,
-            .cube--3 .cube-face--back   { transform: rotateY(180deg) translateZ(16px); }
-            .cube--2 .cube-face--right,
-            .cube--3 .cube-face--right  { transform: rotateY(90deg) translateZ(16px); }
-            .cube--2 .cube-face--left,
-            .cube--3 .cube-face--left   { transform: rotateY(-90deg) translateZ(16px); }
-            .cube--2 .cube-face--top,
-            .cube--3 .cube-face--top    { transform: rotateX(90deg) translateZ(16px); }
-            .cube--2 .cube-face--bottom,
-            .cube--3 .cube-face--bottom { transform: rotateX(-90deg) translateZ(16px); }
-            
-            /* Langsamere Animation auf Mobile für bessere Performance */
-            .cube--1 { animation-duration: 35s; }
-            .cube--2 { animation-duration: 40s; }
-            .cube--3 { animation-duration: 45s; }
-        }
-        
-        /* Sehr kleine Screens */
-        @media (max-width: 480px) {
-            .hero-graphic {
-                max-width: 220px;
-            }
-            
-            .cubes-container {
-                transform: translateZ(0) scale(0.75);
-            }
-        }
-        
-        /* Reduzierte Bewegung für Barrierefreiheit */
-        @media (prefers-reduced-motion: reduce) {
-            .cube--1, .cube--2, .cube--3 {
-                animation: none;
-            }
-            .cube--1 { transform: rotateX(-15deg) rotateY(45deg); }
-            .cube--2 { transform: rotateX(10deg) rotateY(30deg); }
-            .cube--3 { transform: rotateX(-10deg) rotateY(60deg); }
-            
-            .hero-graphic {
-                animation: none;
-            }
-            
-            .hero-graphic::before {
-                animation: none;
-            }
-        }
-    </style>
+    @media (prefers-reduced-motion: reduce) {
+      .hero-graphic { animation: none; }
+      .hero-graphic::before { animation: none; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">Webstudio <span>pm</span></a>
-            <button class="menu-toggle" aria-label="Menü öffnen">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <a href="index.html" class="active">Startseite</a>
-                <a href="webseite-erstellen.html">Leistungen</a>
-                <a href="gastro-fair-one.html">Gastro Fair One</a>
-                <a href="contact.html">Kontakt</a>
-            </nav>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">Webstudio <span>pm</span></a>
+    <button class="menu-toggle" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <a href="index.html" class="active">Startseite</a>
+      <a href="webseite-erstellen.html">Leistungen</a>
+      <a href="gastro-fair-one.html">Gastro Fair One</a>
+      <a href="contact.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="fade-in">Ihre Webseite, <em>professionell</em> umgesetzt</h1>
+        <p class="fade-in delay-1">
+          Wir erstellen moderne, SEO-optimierte Webseiten, die Ihr Unternehmen perfekt repräsentieren.
+          Inklusive zuverlässigem Hosting und kontinuierlicher Pflege.
+        </p>
+        <div class="btn-group fade-in delay-2">
+          <a href="contact.html" class="btn btn-primary">Projekt starten</a>
+          <a href="webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
         </div>
-    </header>
+      </div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="fade-in">Ihre Webseite, <em>professionell</em> umgesetzt</h1>
-                    <p class="fade-in delay-1">Wir erstellen moderne, SEO-optimierte Webseiten, die Ihr Unternehmen perfekt repräsentieren. Inklusive zuverlässigem Hosting und kontinuierlicher Pflege.</p>
-                    <div class="btn-group fade-in delay-2">
-                        <a href="contact.html" class="btn btn-primary">Projekt starten</a>
-                        <a href="webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
-                    </div>
-                </div>
-                <div class="hero-visual fade-in delay-3">
-                    <div class="hero-graphic">
-                        <div class="cubes-container">
-                            <div class="cube-wrapper cube-wrapper--1">
-                                <div class="cube cube--1">
-                                    <div class="cube-face cube-face--front"></div>
-                                    <div class="cube-face cube-face--back"></div>
-                                    <div class="cube-face cube-face--right"></div>
-                                    <div class="cube-face cube-face--left"></div>
-                                    <div class="cube-face cube-face--top"></div>
-                                    <div class="cube-face cube-face--bottom"></div>
-                                </div>
-                            </div>
-                            <div class="cube-wrapper cube-wrapper--2">
-                                <div class="cube cube--2">
-                                    <div class="cube-face cube-face--front"></div>
-                                    <div class="cube-face cube-face--back"></div>
-                                    <div class="cube-face cube-face--right"></div>
-                                    <div class="cube-face cube-face--left"></div>
-                                    <div class="cube-face cube-face--top"></div>
-                                    <div class="cube-face cube-face--bottom"></div>
-                                </div>
-                            </div>
-                            <div class="cube-wrapper cube-wrapper--3">
-                                <div class="cube cube--3">
-                                    <div class="cube-face cube-face--front"></div>
-                                    <div class="cube-face cube-face--back"></div>
-                                    <div class="cube-face cube-face--right"></div>
-                                    <div class="cube-face cube-face--left"></div>
-                                    <div class="cube-face cube-face--top"></div>
-                                    <div class="cube-face cube-face--bottom"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="section-container">
-                <div class="section-header">
-                    <h2>Unsere Leistungen</h2>
-                    <p>Von der Konzeption bis zum laufenden Betrieb – wir begleiten Sie bei jedem Schritt zu Ihrer perfekten Webpräsenz.</p>
-                </div>
-                
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon service-icon--design"></div>
-                        <h3>Webdesign & Entwicklung</h3>
-                        <p>Individuelle Webseiten, die zeitgemäß gestaltet sind und auf allen Geräten perfekt funktionieren. Responsive Design ist bei uns Standard.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon--cloud"></div>
-                        <h3>Cloudflare Hosting</h3>
-                        <p>Schnelles, sicheres Hosting über Cloudflare. Ihre Webseite profitiert von globaler Verfügbarkeit, DDoS-Schutz und optimalen Ladezeiten.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon--seo"></div>
-                        <h3>SEO-Optimierung</h3>
-                        <p>Alle unsere Webseiten werden von Grund auf für Suchmaschinen optimiert. Technisches SEO, schnelle Ladezeiten und sauberer Code.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon--lock"></div>
-                        <h3>Rechtliche Sicherheit</h3>
-                        <p>Impressum und Datenschutzerklärung werden von uns erstellt und regelmäßig aktualisiert – immer auf dem neuesten rechtlichen Stand.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon--update"></div>
-                        <h3>Monatliche Updates</h3>
-                        <p>Bei unserem Hosting-Service werden Sicherheitsupdates, Inhaltsaktualisierungen und technische Wartung regelmäßig durchgeführt.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon service-icon--shield"></div>
-                        <h3>Technische Checks</h3>
-                        <p>Regelmäßige Sicherheitsscans und Performance-Analysen sorgen dafür, dass Ihre Webseite stets optimal läuft.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background: var(--color-off-white);">
-            <div class="section-container">
-                <div class="feature-box">
-                    <div class="feature-box-content">
-                        <div>
-                            <h3>Gastro Fair One</h3>
-                            <p>Das exklusive Abo für Gastronomen. Sie führen ein Restaurant, Café oder eine Bar? Mit Gastro Fair One erhalten Sie eine maßgeschneiderte Webseite, die Ihr gastronomisches Erlebnis authentisch widerspiegelt – individuell gestaltet nach Ihren Vorstellungen.</p>
-                            <p>Profitieren Sie von einem Rundum-sorglos-Paket: professionelles Design, rechtliche Absicherung und kontinuierliche Betreuung.</p>
-                            <a href="gastro-fair-one.html" class="btn btn-primary" style="margin-top: 1rem;">Mehr über Gastro Fair One</a>
-                        </div>
-                        <div>
-                            <ul class="check-list">
-                                <li>Individuelle Webseite für Ihre Gastronomie</li>
-                                <li>Mobil optimiert und modern</li>
-                                <li>Hosting inklusive</li>
-                                <li>Rechtlich abgesichert</li>
-                                <li>Persönliche Betreuung</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="section-container text-center">
-                <h2>Bereit für Ihre neue Webseite?</h2>
-                <p style="max-width: 600px; margin: 0 auto 2rem;">Lassen Sie uns gemeinsam Ihr Projekt besprechen. Wir beraten Sie gerne unverbindlich zu Ihren Möglichkeiten.</p>
-                <a href="contact.html" class="btn btn-primary">Kontakt aufnehmen</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="logo">Webstudio <span>pm</span></span>
-                    <p>Professionelle Webseiten-Erstellung und Hosting. Modern, sicher und rechtlich abgesichert.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="index.html">Startseite</a></li>
-                        <li><a href="webseite-erstellen.html">Leistungen</a></li>
-                        <li><a href="gastro-fair-one.html">Gastro Fair One</a></li>
-                        <li><a href="contact.html">Kontakt</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Rechtliches</h4>
-                    <ul>
-                        <li><a href="impressum.html">Impressum</a></li>
-                        <li><a href="datenschutz.html">Datenschutz</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
-                <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
-            </div>
+      <div class="hero-visual fade-in delay-3">
+        <div class="hero-graphic">
+          <canvas id="cubes-canvas"></canvas>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <section>
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Unsere Leistungen</h2>
+        <p>Von der Konzeption bis zum laufenden Betrieb – wir begleiten Sie bei jedem Schritt zu Ihrer perfekten Webpräsenz.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon service-icon--design"></div>
+          <h3>Webdesign & Entwicklung</h3>
+          <p>Individuelle Webseiten, die zeitgemäß gestaltet sind und auf allen Geräten perfekt funktionieren. Responsive Design ist bei uns Standard.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--cloud"></div>
+          <h3>Cloudflare Hosting</h3>
+          <p>Schnelles, sicheres Hosting über Cloudflare. Ihre Webseite profitiert von globaler Verfügbarkeit, DDoS-Schutz und optimalen Ladezeiten.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--seo"></div>
+          <h3>SEO-Optimierung</h3>
+          <p>Alle unsere Webseiten werden von Grund auf für Suchmaschinen optimiert. Technisches SEO, schnelle Ladezeiten und sauberer Code.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--lock"></div>
+          <h3>Rechtliche Sicherheit</h3>
+          <p>Impressum und Datenschutzerklärung werden von uns erstellt und regelmäßig aktualisiert – immer auf dem neuesten rechtlichen Stand.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--update"></div>
+          <h3>Monatliche Updates</h3>
+          <p>Bei unserem Hosting-Service werden Sicherheitsupdates, Inhaltsaktualisierungen und technische Wartung regelmäßig durchgeführt.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon service-icon--shield"></div>
+          <h3>Technische Checks</h3>
+          <p>Regelmäßige Sicherheitsscans und Performance-Analysen sorgen dafür, dass Ihre Webseite stets optimal läuft.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--color-off-white);">
+    <div class="section-container">
+      <div class="feature-box">
+        <div class="feature-box-content">
+          <div>
+            <h3>Gastro Fair One</h3>
+            <p>
+              Das exklusive Abo für Gastronomen. Sie führen ein Restaurant, Café oder eine Bar?
+              Mit Gastro Fair One erhalten Sie eine maßgeschneiderte Webseite, die Ihr gastronomisches Erlebnis authentisch widerspiegelt – individuell gestaltet nach Ihren Vorstellungen.
+            </p>
+            <p>
+              Profitieren Sie von einem Rundum-sorglos-Paket: professionelles Design, rechtliche Absicherung und kontinuierliche Betreuung.
+            </p>
+            <a href="gastro-fair-one.html" class="btn btn-primary" style="margin-top: 1rem;">Mehr über Gastro Fair One</a>
+          </div>
+          <div>
+            <ul class="check-list">
+              <li>Individuelle Webseite für Ihre Gastronomie</li>
+              <li>Mobil optimiert und modern</li>
+              <li>Hosting inklusive</li>
+              <li>Rechtlich abgesichert</li>
+              <li>Persönliche Betreuung</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-container text-center">
+      <h2>Bereit für Ihre neue Webseite?</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem;">
+        Lassen Sie uns gemeinsam Ihr Projekt besprechen. Wir beraten Sie gerne unverbindlich zu Ihren Möglichkeiten.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Webstudio <span>pm</span></span>
+        <p>Professionelle Webseiten-Erstellung und Hosting. Modern, sicher und rechtlich abgesichert.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="webseite-erstellen.html">Leistungen</a></li>
+          <li><a href="gastro-fair-one.html">Gastro Fair One</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
+      <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- RoundedBoxGeometry (für abgerundete Würfelkanten) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+
+<script>
+(function () {
+  const canvas = document.getElementById("cubes-canvas");
+  if (!canvas) return;
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true
+  });
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  /* ✅ WICHTIG: Damit die Farben wieder wie “ursprünglich” wirken */
+  /* renderer.outputEncoding = THREE.sRGBEncoding; */
+
+  const scene = new THREE.Scene();
+
+  const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
+  camera.position.set(0, 0, 7);
+  camera.lookAt(0, 0, 0);
+
+  // Licht Setup: clean & hochwertig
+  const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+  scene.add(ambient);
+
+  const key = new THREE.DirectionalLight(0xffffff, 0.9);
+  key.position.set(4, 6, 8);
+  scene.add(key);
+
+  const fill = new THREE.DirectionalLight(0xffffff, 0.35);
+  fill.position.set(-6, -2, 6);
+  scene.add(fill);
+
+  // Farben pro Seite (ursprünglich)
+  const cubeColors1 = [0x3b82f6, 0x2563eb, 0x60a5fa, 0x1d4ed8, 0x3b82f6, 0x2563eb];
+  const cubeColors2 = [0x2563eb, 0x1d4ed8, 0x3b82f6, 0x1e40af, 0x2563eb, 0x1d4ed8];
+  const cubeColors3 = [0x60a5fa, 0x3b82f6, 0x93c5fd, 0x2563eb, 0x60a5fa, 0x3b82f6];
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function makeGeometry(size) {
+    if (THREE.RoundedBoxGeometry) {
+      return new THREE.RoundedBoxGeometry(size, size, size, 8, size * 0.12);
+    }
+    return new THREE.BoxGeometry(size, size, size);
+  }
+
+  /* ✅ EINZIGE ÄNDERUNG: wieder Lambert wie “ursprünglich” */
+  function faceMaterials(colors) {
+    return colors.map((c) => new THREE.MeshLambertMaterial({ color: c }));
+  }
+
+  function addEdges(mesh) {
+    const edges = new THREE.EdgesGeometry(mesh.geometry, 28);
+    const mat = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.18
+    });
+    const lines = new THREE.LineSegments(edges, mat);
+    lines.renderOrder = 999;
+    mesh.add(lines);
+  }
+
+  function createCube(size, colors) {
+    const geo = makeGeometry(size);
+    const mats = faceMaterials(colors);
+    const cube = new THREE.Mesh(geo, mats);
+    addEdges(cube);
+    return cube;
+  }
+
+  // Gruppe statt Chaos: besser kontrollierbar
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const cube1 = createCube(1.45, cubeColors1);
+  cube1.position.set(0, 0, -0.25);
+  group.add(cube1);
+
+  const cube2 = createCube(0.95, cubeColors2);
+  cube2.position.set(-1.55, 1.05, 0.85);
+  group.add(cube2);
+
+  const cube3 = createCube(0.95, cubeColors3);
+  cube3.position.set(1.55, -1.05, 0.85);
+  group.add(cube3);
+
+  cube1.rotation.set(-0.25, 0.35, 0.05);
+  cube2.rotation.set(0.18, -0.25, 0.12);
+  cube3.rotation.set(-0.12, 0.22, -0.08);
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  let t = 0;
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (!prefersReducedMotion) {
+      t += 0.012;
+
+      group.rotation.y += 0.006;
+      group.rotation.x = Math.sin(t * 0.35) * 0.08;
+
+      cube2.position.y = 1.05 + Math.sin(t * 0.8) * 0.05;
+      cube3.position.y = -1.05 + Math.cos(t * 0.8) * 0.05;
+
+      cube1.rotation.y += 0.004;
+      cube2.rotation.y -= 0.005;
+      cube3.rotation.y += 0.005;
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+})();
+</script>
+
 </body>
 </html>
