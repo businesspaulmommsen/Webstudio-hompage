@@ -1,0 +1,11 @@
+# Robots.txt for Webstudio PM
+# https://webstudio-pm.de
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://webstudio-pm.de/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 1
