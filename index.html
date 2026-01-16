@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="Webstudio PM – Professionelle Webseiten-Erstellung und Hosting. SEO-optimierte Websites mit Cloudflare-Hosting, monatlichen Updates und rechtlicher Absicherung.">
   <meta name="keywords" content="Webdesign, Webentwicklung, Hosting, SEO, Cloudflare, professionelle Webseiten">
   <meta name="author" content="Webstudio PM">
   <meta name="robots" content="index, follow">
+
   <meta property="og:title" content="Webstudio PM – Professionelle Webseiten">
   <meta property="og:description" content="Wir erstellen und hosten professionelle, SEO-optimierte Webseiten für Ihr Unternehmen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://webstudio-pm.de">
+
   <link rel="canonical" href="https://webstudio-pm.de">
   <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- ✅ Mini-HTML Fixes nur für Canvas + Icon-Box (Mobile Safe) -->
   <style>
+    /* ✅ verhindert Mobile Overflow durch Canvas */
+    .hero-visual {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
     .hero-graphic {
       width: 100%;
       max-width: 400px;
@@ -64,13 +77,14 @@
       50% { transform: scale(1.15); opacity: 0.85; }
     }
 
-    .hero-graphic::after { display: none; }
+    .hero-graphic::after { display: none !important; }
 
     #cubes-canvas {
       position: relative;
       z-index: 1;
       width: 220px;
       height: 220px;
+      display: block;
     }
 
     @media (max-width: 768px) {
@@ -79,13 +93,27 @@
     }
 
     @media (max-width: 480px) {
-      .hero-graphic { max-width: 220px; }
+      .hero-graphic { max-width: 230px; }
       #cubes-canvas { width: 130px; height: 130px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-graphic { animation: none; }
-      .hero-graphic::before { animation: none; }
+      .hero-graphic { animation: none !important; }
+      .hero-graphic::before { animation: none !important; }
+    }
+
+    /* ✅ Bulletproof Icon Box – egal was CSS macht */
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+    }
+
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
     }
   </style>
 </head>
@@ -111,14 +139,17 @@
 </header>
 
 <main>
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-container">
       <div class="hero-content">
         <h1 class="fade-in">Ihre Webseite, <em>professionell</em> umgesetzt</h1>
+
         <p class="fade-in delay-1">
           Wir erstellen moderne, SEO-optimierte Webseiten, die Ihr Unternehmen perfekt repräsentieren.
           Inklusive zuverlässigem Hosting und kontinuierlicher Pflege.
         </p>
+
         <div class="btn-group fade-in delay-2">
           <a href="/contact.html" class="btn btn-primary">Projekt starten</a>
           <a href="/webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
@@ -133,6 +164,7 @@
     </div>
   </section>
 
+  <!-- SERVICES -->
   <section>
     <div class="section-container">
       <div class="section-header">
@@ -143,7 +175,7 @@
       <div class="services-grid">
 
         <div class="service-card">
-          <div class="service-icon service-icon--design service-icon--svg" aria-hidden="true">
+          <div class="service-icon service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 20h9" />
               <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -154,7 +186,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--cloud service-icon--svg" aria-hidden="true">
+          <div class="service-icon service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 17.5a4.5 4.5 0 0 0-1.7-8.6A6 6 0 0 0 6.2 9.8" />
               <path d="M6 17.5a4.5 4.5 0 0 1 .3-9" />
@@ -166,7 +198,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--seo service-icon--svg" aria-hidden="true">
+          <div class="service-icon service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
               <path d="M21 21l-4.35-4.35" />
@@ -178,7 +210,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--lock service-icon--svg" aria-hidden="true">
+          <div class="service-icon service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M7 11V8a5 5 0 0 1 10 0v3" />
               <path d="M6 11h12v10H6z" />
@@ -190,7 +222,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--update service-icon--svg" aria-hidden="true">
+          <div class="service-icon service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12a9 9 0 1 1-3-6.7" />
               <path d="M21 3v6h-6" />
@@ -202,7 +234,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--shield service-icon--svg" aria-hidden="true">
+          <div class="service-icon service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
               <path d="M9 12l2 2 4-4" />
@@ -246,15 +278,14 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
-      <p>
-        <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
-      </p>
+      <p><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>
     </div>
   </div>
 </footer>
 
 <script src="script.js"></script>
 
+<!-- Three.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
 
@@ -371,15 +402,15 @@
       cube2.position.y = 1.05 + Math.sin(t * 0.8) * 0.05;
       cube3.position.y = -1.05 + Math.cos(t * 0.8) * 0.05;
 
-      /* ✅ MITTLERER Würfel: jetzt auch vertikal drehen (X) + langsamer */
+      /* ✅ MITTEL: vertikal drehen (X) + langsam */
       cube1.rotation.y += 0.0025;
       cube1.rotation.x += 0.0017;
 
-      /* ✅ OBERER Würfel: bleibt schneller + vertikal drehen */
+      /* ✅ OBEN: schnell + vertikal */
       cube2.rotation.y -= 0.005;
       cube2.rotation.x += 0.0045;
 
-      /* ✅ UNTERER Würfel: jetzt auch vertikal drehen (X) + schnell */
+      /* ✅ UNTEN: schnell + vertikal */
       cube3.rotation.y += 0.005;
       cube3.rotation.x -= 0.0036;
     }
