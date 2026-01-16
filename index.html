@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ✅ dein Hero-3D-Kreis Setup wie vorher */
     .hero-graphic {
       width: 100%;
       max-width: 400px;
@@ -65,9 +64,7 @@
       50% { transform: scale(1.15); opacity: 0.85; }
     }
 
-    .hero-graphic::after {
-      display: none;
-    }
+    .hero-graphic::after { display: none; }
 
     #cubes-canvas {
       position: relative;
@@ -96,17 +93,19 @@
 <body>
 <header>
   <div class="header-container">
-    <a href="index.html" class="logo">Webstudio <span>pm</span></a>
+    <a href="/index.html" class="logo">Webstudio <span>pm</span></a>
+
     <button class="menu-toggle" aria-label="Menü öffnen">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
     <nav>
-      <a href="index.html" class="active">Startseite</a>
-      <a href="webseite-erstellen.html">Leistungen</a>
-      <a href="gastro-fair-one.html">Gastro Fair One</a>
-      <a href="contact.html">Kontakt</a>
+      <a href="/index.html" class="active">Startseite</a>
+      <a href="/webseite-erstellen.html">Leistungen</a>
+      <a href="/gastro-fair-one.html">Gastro Fair One</a>
+      <a href="/contact.html">Kontakt</a>
     </nav>
   </div>
 </header>
@@ -121,8 +120,8 @@
           Inklusive zuverlässigem Hosting und kontinuierlicher Pflege.
         </p>
         <div class="btn-group fade-in delay-2">
-          <a href="contact.html" class="btn btn-primary">Projekt starten</a>
-          <a href="webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
+          <a href="/contact.html" class="btn btn-primary">Projekt starten</a>
+          <a href="/webseite-erstellen.html" class="btn btn-secondary">Mehr erfahren</a>
         </div>
       </div>
 
@@ -142,8 +141,9 @@
       </div>
 
       <div class="services-grid">
+
         <div class="service-card">
-          <div class="service-icon service-icon--design" aria-hidden="true">
+          <div class="service-icon service-icon--design service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 20h9" />
               <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -154,7 +154,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--cloud" aria-hidden="true">
+          <div class="service-icon service-icon--cloud service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 17.5a4.5 4.5 0 0 0-1.7-8.6A6 6 0 0 0 6.2 9.8" />
               <path d="M6 17.5a4.5 4.5 0 0 1 .3-9" />
@@ -166,7 +166,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--seo" aria-hidden="true">
+          <div class="service-icon service-icon--seo service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 16a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
               <path d="M21 21l-4.35-4.35" />
@@ -178,7 +178,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--lock" aria-hidden="true">
+          <div class="service-icon service-icon--lock service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M7 11V8a5 5 0 0 1 10 0v3" />
               <path d="M6 11h12v10H6z" />
@@ -190,7 +190,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--update" aria-hidden="true">
+          <div class="service-icon service-icon--update service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12a9 9 0 1 1-3-6.7" />
               <path d="M21 3v6h-6" />
@@ -202,7 +202,7 @@
         </div>
 
         <div class="service-card">
-          <div class="service-icon service-icon--shield" aria-hidden="true">
+          <div class="service-icon service-icon--shield service-icon--svg" aria-hidden="true">
             <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" />
               <path d="M9 12l2 2 4-4" />
@@ -211,46 +211,8 @@
           <h3>Technische Checks</h3>
           <p>Regelmäßige Sicherheitsscans und Performance-Analysen sorgen dafür, dass Ihre Webseite stets optimal läuft.</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section style="background: var(--color-off-white);">
-    <div class="section-container">
-      <div class="feature-box">
-        <div class="feature-box-content">
-          <div>
-            <h3>Gastro Fair One</h3>
-            <p>
-              Das exklusive Abo für Gastronomen. Sie führen ein Restaurant, Café oder eine Bar?
-              Mit Gastro Fair One erhalten Sie eine maßgeschneiderte Webseite, die Ihr gastronomisches Erlebnis authentisch widerspiegelt – individuell gestaltet nach Ihren Vorstellungen.
-            </p>
-            <p>
-              Profitieren Sie von einem Rundum-sorglos-Paket: professionelles Design, rechtliche Absicherung und kontinuierliche Betreuung.
-            </p>
-            <a href="gastro-fair-one.html" class="btn btn-primary" style="margin-top: 1rem;">Mehr über Gastro Fair One</a>
-          </div>
-          <div>
-            <ul class="check-list">
-              <li>Individuelle Webseite für Ihre Gastronomie</li>
-              <li>Mobil optimiert und modern</li>
-              <li>Hosting inklusive</li>
-              <li>Rechtlich abgesichert</li>
-              <li>Persönliche Betreuung</li>
-            </ul>
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-container text-center">
-      <h2>Bereit für Ihre neue Webseite?</h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem;">
-        Lassen Sie uns gemeinsam Ihr Projekt besprechen. Wir beraten Sie gerne unverbindlich zu Ihren Möglichkeiten.
-      </p>
-      <a href="contact.html" class="btn btn-primary">Kontakt aufnehmen</a>
     </div>
   </section>
 </main>
@@ -262,34 +224,37 @@
         <span class="logo">Webstudio <span>pm</span></span>
         <p>Professionelle Webseiten-Erstellung und Hosting. Modern, sicher und rechtlich abgesichert.</p>
       </div>
+
       <div class="footer-links">
         <h4>Navigation</h4>
         <ul>
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="webseite-erstellen.html">Leistungen</a></li>
-          <li><a href="gastro-fair-one.html">Gastro Fair One</a></li>
-          <li><a href="contact.html">Kontakt</a></li>
+          <li><a href="/index.html">Startseite</a></li>
+          <li><a href="/webseite-erstellen.html">Leistungen</a></li>
+          <li><a href="/gastro-fair-one.html">Gastro Fair One</a></li>
+          <li><a href="/contact.html">Kontakt</a></li>
         </ul>
       </div>
+
       <div class="footer-links">
         <h4>Rechtliches</h4>
         <ul>
-          <li><a href="impressum.html">Impressum</a></li>
-          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="/impressum.html">Impressum</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
-      <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+      <p>
+        <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+      </p>
     </div>
   </div>
 </footer>
 
 <script src="script.js"></script>
 
-<!-- Three.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
 
@@ -324,10 +289,9 @@
   fill.position.set(-6, -2, 6);
   scene.add(fill);
 
-  // ✅ Würfel-Farben (Original wie am Anfang)
-  const cubeColors1 = [0x3b82f6, 0x2563eb, 0x60a5fa, 0x1d4ed8, 0x3b82f6, 0x2563eb];
-  const cubeColors2 = [0x2563eb, 0x1d4ed8, 0x3b82f6, 0x1e40af, 0x2563eb, 0x1d4ed8];
-  const cubeColors3 = [0x60a5fa, 0x3b82f6, 0x93c5fd, 0x2563eb, 0x60a5fa, 0x3b82f6];
+  const COLOR_MIDDLE = 0x2563eb;
+  const COLOR_TOP    = 0x1d4ed8;
+  const COLOR_BOTTOM = 0x60a5fa;
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -338,9 +302,8 @@
     return new THREE.BoxGeometry(size, size, size);
   }
 
-  // ✅ Lambert wie “ursprünglich” = Farben wirken korrekt
-  function faceMaterials(colors) {
-    return colors.map((c) => new THREE.MeshLambertMaterial({ color: c }));
+  function solidMaterial(color) {
+    return new THREE.MeshLambertMaterial({ color });
   }
 
   function addEdges(mesh) {
@@ -355,10 +318,9 @@
     mesh.add(lines);
   }
 
-  function createCube(size, colors) {
+  function createCube(size, color) {
     const geo = makeGeometry(size);
-    const mats = faceMaterials(colors);
-    const cube = new THREE.Mesh(geo, mats);
+    const cube = new THREE.Mesh(geo, solidMaterial(color));
     addEdges(cube);
     return cube;
   }
@@ -366,15 +328,15 @@
   const group = new THREE.Group();
   scene.add(group);
 
-  const cube1 = createCube(1.45, cubeColors1);
+  const cube1 = createCube(1.45, COLOR_MIDDLE);
   cube1.position.set(0, 0, -0.25);
   group.add(cube1);
 
-  const cube2 = createCube(0.95, cubeColors2);
+  const cube2 = createCube(0.95, COLOR_TOP);
   cube2.position.set(-1.55, 1.05, 0.85);
   group.add(cube2);
 
-  const cube3 = createCube(0.95, cubeColors3);
+  const cube3 = createCube(0.95, COLOR_BOTTOM);
   cube3.position.set(1.55, -1.05, 0.85);
   group.add(cube3);
 
@@ -409,9 +371,17 @@
       cube2.position.y = 1.05 + Math.sin(t * 0.8) * 0.05;
       cube3.position.y = -1.05 + Math.cos(t * 0.8) * 0.05;
 
-      cube1.rotation.y += 0.004;
+      /* ✅ MITTLERER Würfel: jetzt auch vertikal drehen (X) + langsamer */
+      cube1.rotation.y += 0.0025;
+      cube1.rotation.x += 0.0017;
+
+      /* ✅ OBERER Würfel: bleibt schneller + vertikal drehen */
       cube2.rotation.y -= 0.005;
+      cube2.rotation.x += 0.0045;
+
+      /* ✅ UNTERER Würfel: jetzt auch vertikal drehen (X) + schnell */
       cube3.rotation.y += 0.005;
+      cube3.rotation.x -= 0.0036;
     }
 
     renderer.render(scene, camera);
