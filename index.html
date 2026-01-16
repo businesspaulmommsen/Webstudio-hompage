@@ -33,17 +33,6 @@
             box-shadow: 
                 inset 0 0 60px rgba(37, 99, 235, 0.08),
                 inset 0 0 120px rgba(37, 99, 235, 0.05);
-            /* Smooth transition for mouse interaction */
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-            cursor: pointer;
-        }
-
-        /* Hover effect - gentle push back */
-        .hero-graphic:hover {
-            box-shadow: 
-                inset 0 0 80px rgba(37, 99, 235, 0.15),
-                inset 0 0 140px rgba(37, 99, 235, 0.1),
-                0 0 40px rgba(37, 99, 235, 0.1);
         }
 
         /* Morphing shape animation - subtle organic deformation */
@@ -87,15 +76,6 @@
                 0 0 40px rgba(37, 99, 235, 0.3),
                 0 0 80px rgba(37, 99, 235, 0.2),
                 inset 0 0 30px rgba(37, 99, 235, 0.15);
-            transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
-        }
-
-        /* Inner circle reacts stronger on hover */
-        .hero-graphic:hover::before {
-            box-shadow: 
-                0 0 60px rgba(37, 99, 235, 0.5),
-                0 0 100px rgba(37, 99, 235, 0.3),
-                inset 0 0 40px rgba(37, 99, 235, 0.2);
         }
 
         @keyframes pulseGlowInner {
@@ -130,12 +110,6 @@
                 -30px -30px 0 -10px var(--color-accent-hover),
                 30px 30px 0 -10px rgba(37, 99, 235, 0.4);
             transform: rotate(12deg);
-            transition: transform 0.3s ease-out;
-        }
-
-        /* Squares rotate slightly on hover */
-        .hero-graphic:hover::after {
-            transform: rotate(20deg) scale(1.05);
         }
     </style>
 </head>
@@ -169,7 +143,7 @@
                     </div>
                 </div>
                 <div class="hero-visual fade-in delay-3">
-                    <div class="hero-graphic" id="heroGraphic"></div>
+                    <div class="hero-graphic"></div>
                 </div>
             </div>
         </section>
@@ -286,49 +260,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Interactive mouse tracking for hero graphic
-        const heroGraphic = document.getElementById('heroGraphic');
-        
-        if (heroGraphic) {
-            // Track mouse position relative to the circle center
-            heroGraphic.addEventListener('mousemove', (e) => {
-                const rect = heroGraphic.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                // Calculate distance from center (-1 to 1)
-                const x = (e.clientX - centerX) / (rect.width / 2);
-                const y = (e.clientY - centerY) / (rect.height / 2);
-                
-                // Apply subtle tilt/push effect (max 8 degrees rotation, 5px translation)
-                const rotateX = -y * 8;
-                const rotateY = x * 8;
-                const translateX = x * 5;
-                const translateY = y * 5;
-                
-                heroGraphic.style.transform = `
-                    perspective(500px) 
-                    rotateX(${rotateX}deg) 
-                    rotateY(${rotateY}deg)
-                    translate(${translateX}px, ${translateY}px)
-                `;
-            });
-            
-            // Reset on mouse leave
-            heroGraphic.addEventListener('mouseleave', () => {
-                heroGraphic.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) translate(0px, 0px)';
-            });
-            
-            // Add slight "push" effect on click
-            heroGraphic.addEventListener('mousedown', () => {
-                heroGraphic.style.transform += ' scale(0.97)';
-            });
-            
-            heroGraphic.addEventListener('mouseup', () => {
-                heroGraphic.style.transform = heroGraphic.style.transform.replace(' scale(0.97)', '');
-            });
-        }
-    </script>
 </body>
 </html>
