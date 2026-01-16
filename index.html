@@ -15,7 +15,6 @@
     <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Hero graphic with breathing animation */
         .hero-graphic {
             width: 100%;
             max-width: 400px;
@@ -44,7 +43,6 @@
             87.5% { border-radius: 50% 50% 52% 48% / 48% 52% 48% 52%; }
         }
 
-        /* Inner blue glow circle */
         .hero-graphic::before {
             content: '';
             position: absolute;
@@ -63,27 +61,17 @@
             0%, 100% { 
                 transform: scale(1); 
                 opacity: 0.5;
-                box-shadow: 
-                    0 0 40px rgba(37, 99, 235, 0.3),
-                    0 0 80px rgba(37, 99, 235, 0.2),
-                    inset 0 0 30px rgba(37, 99, 235, 0.15);
             }
             50% { 
                 transform: scale(1.15); 
                 opacity: 0.85;
-                box-shadow: 
-                    0 0 60px rgba(37, 99, 235, 0.5),
-                    0 0 120px rgba(37, 99, 235, 0.35),
-                    inset 0 0 50px rgba(37, 99, 235, 0.25);
             }
         }
 
-        /* Remove default ::after */
         .hero-graphic::after {
             display: none;
         }
 
-        /* 3D Cubes Container */
         .cubes-container {
             position: relative;
             width: 140px;
@@ -92,7 +80,6 @@
             perspective: 800px;
         }
 
-        /* Individual cube wrapper for positioning */
         .cube-wrapper {
             position: absolute;
             perspective: 500px;
@@ -103,21 +90,23 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 3;
+            filter: drop-shadow(0 20px 25px rgba(30, 64, 175, 0.35));
         }
 
         .cube-wrapper--2 {
             top: 0;
             left: 0;
             z-index: 2;
+            filter: drop-shadow(0 15px 20px rgba(30, 64, 175, 0.3));
         }
 
         .cube-wrapper--3 {
             bottom: 0;
             right: 0;
             z-index: 1;
+            filter: drop-shadow(0 15px 20px rgba(37, 99, 235, 0.25));
         }
 
-        /* 3D Cube */
         .cube {
             position: relative;
             transform-style: preserve-3d;
@@ -126,154 +115,104 @@
         .cube--1 {
             width: 70px;
             height: 70px;
-            animation: rotateCube1 25s linear infinite;
+            animation: rotateCube1 28s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         .cube--2 {
             width: 45px;
             height: 45px;
-            animation: rotateCube2 30s linear infinite;
+            animation: rotateCube2 32s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
         .cube--3 {
             width: 45px;
             height: 45px;
-            animation: rotateCube3 35s linear infinite;
+            animation: rotateCube3 36s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
-        /* Cube faces */
         .cube-face {
             position: absolute;
             backface-visibility: visible;
-            border-radius: 10px;
         }
 
-        /* Main cube (blue) - Premium glass effect */
+        /* Cube 1 */
         .cube--1 .cube-face {
             width: 70px;
             height: 70px;
-            box-shadow: 
-                inset 0 0 20px rgba(255, 255, 255, 0.1),
-                0 8px 32px rgba(37, 99, 235, 0.3);
         }
+        .cube--1 .cube-face--front  { transform: translateZ(35px); background: #3b82f6; }
+        .cube--1 .cube-face--back   { transform: rotateY(180deg) translateZ(35px); background: #2563eb; }
+        .cube--1 .cube-face--right  { transform: rotateY(90deg) translateZ(35px); background: #3b82f6; }
+        .cube--1 .cube-face--left   { transform: rotateY(-90deg) translateZ(35px); background: #2563eb; }
+        .cube--1 .cube-face--top    { transform: rotateX(90deg) translateZ(35px); background: #60a5fa; }
+        .cube--1 .cube-face--bottom { transform: rotateX(-90deg) translateZ(35px); background: #1d4ed8; }
 
-        .cube--1 .cube-face--front  { 
-            transform: translateZ(35px); 
-            background: linear-gradient(145deg, #4f8ef7 0%, #2563eb 50%, #1d4ed8 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .cube--1 .cube-face--back   { 
-            transform: rotateY(180deg) translateZ(35px); 
-            background: linear-gradient(145deg, #1d4ed8 0%, #1e40af 100%);
-        }
-        .cube--1 .cube-face--right  { 
-            transform: rotateY(90deg) translateZ(35px); 
-            background: linear-gradient(145deg, #3b82f6 0%, #2563eb 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .cube--1 .cube-face--left   { 
-            transform: rotateY(-90deg) translateZ(35px); 
-            background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 100%);
-        }
-        .cube--1 .cube-face--top    { 
-            transform: rotateX(90deg) translateZ(35px); 
-            background: linear-gradient(145deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
-        }
-        .cube--1 .cube-face--bottom { 
-            transform: rotateX(-90deg) translateZ(35px); 
-            background: linear-gradient(145deg, #1e40af 0%, #172554 100%);
-        }
-
-        /* Second cube (darker blue) - Solid premium */
+        /* Cube 2 */
         .cube--2 .cube-face {
             width: 45px;
             height: 45px;
-            box-shadow: 
-                inset 0 0 15px rgba(255, 255, 255, 0.05),
-                0 6px 24px rgba(30, 64, 175, 0.4);
         }
+        .cube--2 .cube-face--front  { transform: translateZ(22.5px); background: #2563eb; }
+        .cube--2 .cube-face--back   { transform: rotateY(180deg) translateZ(22.5px); background: #1d4ed8; }
+        .cube--2 .cube-face--right  { transform: rotateY(90deg) translateZ(22.5px); background: #2563eb; }
+        .cube--2 .cube-face--left   { transform: rotateY(-90deg) translateZ(22.5px); background: #1d4ed8; }
+        .cube--2 .cube-face--top    { transform: rotateX(90deg) translateZ(22.5px); background: #3b82f6; }
+        .cube--2 .cube-face--bottom { transform: rotateX(-90deg) translateZ(22.5px); background: #1e40af; }
 
-        .cube--2 .cube-face--front  { 
-            transform: translateZ(22.5px); 
-            background: linear-gradient(145deg, #1e40af 0%, #1e3a8a 100%);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        .cube--2 .cube-face--back   { 
-            transform: rotateY(180deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, #172554 0%, #0f172a 100%);
-        }
-        .cube--2 .cube-face--right  { 
-            transform: rotateY(90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, #1d4ed8 0%, #1e40af 100%);
-        }
-        .cube--2 .cube-face--left   { 
-            transform: rotateY(-90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, #1e3a8a 0%, #172554 100%);
-        }
-        .cube--2 .cube-face--top    { 
-            transform: rotateX(90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 100%);
-            border-top: 1px solid rgba(96, 165, 250, 0.2);
-        }
-        .cube--2 .cube-face--bottom { 
-            transform: rotateX(-90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
-        }
-
-        /* Third cube - Frosted glass effect */
+        /* Cube 3 - backface hidden so you don't see back edges through transparent faces */
         .cube--3 .cube-face {
             width: 45px;
             height: 45px;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            box-shadow: 
-                inset 0 0 20px rgba(255, 255, 255, 0.1),
-                0 4px 20px rgba(37, 99, 235, 0.2);
+            backface-visibility: hidden;
         }
+        .cube--3 .cube-face--front  { transform: translateZ(22.5px); background: rgba(96, 165, 250, 0.7); }
+        .cube--3 .cube-face--back   { transform: rotateY(180deg) translateZ(22.5px); background: rgba(59, 130, 246, 0.7); }
+        .cube--3 .cube-face--right  { transform: rotateY(90deg) translateZ(22.5px); background: rgba(96, 165, 250, 0.7); }
+        .cube--3 .cube-face--left   { transform: rotateY(-90deg) translateZ(22.5px); background: rgba(59, 130, 246, 0.7); }
+        .cube--3 .cube-face--top    { transform: rotateX(90deg) translateZ(22.5px); background: rgba(147, 197, 253, 0.75); }
+        .cube--3 .cube-face--bottom { transform: rotateX(-90deg) translateZ(22.5px); background: rgba(37, 99, 235, 0.7); }
 
-        .cube--3 .cube-face--front  { 
-            transform: translateZ(22.5px); 
-            background: linear-gradient(145deg, rgba(96, 165, 250, 0.6) 0%, rgba(59, 130, 246, 0.4) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .cube--3 .cube-face--back   { 
-            transform: rotateY(180deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, rgba(37, 99, 235, 0.3) 0%, rgba(29, 78, 216, 0.2) 100%);
-        }
-        .cube--3 .cube-face--right  { 
-            transform: rotateY(90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, rgba(59, 130, 246, 0.5) 0%, rgba(37, 99, 235, 0.35) 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .cube--3 .cube-face--left   { 
-            transform: rotateY(-90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, rgba(37, 99, 235, 0.35) 0%, rgba(29, 78, 216, 0.25) 100%);
-        }
-        .cube--3 .cube-face--top    { 
-            transform: rotateX(90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, rgba(147, 197, 253, 0.6) 0%, rgba(96, 165, 250, 0.5) 100%);
-            border-top: 1px solid rgba(255, 255, 255, 0.35);
-        }
-        .cube--3 .cube-face--bottom { 
-            transform: rotateX(-90deg) translateZ(22.5px); 
-            background: linear-gradient(145deg, rgba(29, 78, 216, 0.25) 0%, rgba(30, 64, 175, 0.15) 100%);
-        }
-
-        /* Slow, elegant rotation animations */
         @keyframes rotateCube1 {
-            0% { transform: rotateX(-15deg) rotateY(0deg); }
-            100% { transform: rotateX(-15deg) rotateY(360deg); }
+            0% { transform: rotateX(-15deg) rotateY(0deg) rotateZ(0deg); }
+            8% { transform: rotateX(-5deg) rotateY(35deg) rotateZ(3deg); }
+            15% { transform: rotateX(10deg) rotateY(60deg) rotateZ(-2deg); }
+            25% { transform: rotateX(-8deg) rotateY(95deg) rotateZ(5deg); }
+            32% { transform: rotateX(15deg) rotateY(140deg) rotateZ(0deg); }
+            40% { transform: rotateX(-12deg) rotateY(165deg) rotateZ(-4deg); }
+            50% { transform: rotateX(5deg) rotateY(200deg) rotateZ(6deg); }
+            58% { transform: rotateX(-18deg) rotateY(230deg) rotateZ(-3deg); }
+            68% { transform: rotateX(12deg) rotateY(275deg) rotateZ(2deg); }
+            78% { transform: rotateX(-10deg) rotateY(310deg) rotateZ(-5deg); }
+            88% { transform: rotateX(8deg) rotateY(340deg) rotateZ(4deg); }
+            100% { transform: rotateX(-15deg) rotateY(360deg) rotateZ(0deg); }
         }
 
         @keyframes rotateCube2 {
-            0% { transform: rotateX(10deg) rotateY(30deg); }
-            100% { transform: rotateX(10deg) rotateY(390deg); }
+            0% { transform: rotateX(10deg) rotateY(30deg) rotateZ(5deg); }
+            10% { transform: rotateX(-15deg) rotateY(75deg) rotateZ(-8deg); }
+            18% { transform: rotateX(20deg) rotateY(110deg) rotateZ(3deg); }
+            28% { transform: rotateX(-5deg) rotateY(160deg) rotateZ(10deg); }
+            38% { transform: rotateX(12deg) rotateY(200deg) rotateZ(-6deg); }
+            45% { transform: rotateX(-18deg) rotateY(235deg) rotateZ(0deg); }
+            55% { transform: rotateX(8deg) rotateY(280deg) rotateZ(7deg); }
+            65% { transform: rotateX(-12deg) rotateY(315deg) rotateZ(-4deg); }
+            75% { transform: rotateX(15deg) rotateY(350deg) rotateZ(2deg); }
+            85% { transform: rotateX(-8deg) rotateY(375deg) rotateZ(-9deg); }
+            100% { transform: rotateX(10deg) rotateY(390deg) rotateZ(5deg); }
         }
 
         @keyframes rotateCube3 {
-            0% { transform: rotateX(-10deg) rotateY(60deg); }
-            100% { transform: rotateX(-10deg) rotateY(-300deg); }
+            0% { transform: rotateX(-10deg) rotateY(60deg) rotateZ(-3deg); }
+            12% { transform: rotateX(15deg) rotateY(20deg) rotateZ(6deg); }
+            22% { transform: rotateX(-20deg) rotateY(-25deg) rotateZ(-8deg); }
+            30% { transform: rotateX(8deg) rotateY(-70deg) rotateZ(4deg); }
+            42% { transform: rotateX(-12deg) rotateY(-120deg) rotateZ(-2deg); }
+            52% { transform: rotateX(18deg) rotateY(-165deg) rotateZ(9deg); }
+            62% { transform: rotateX(-6deg) rotateY(-210deg) rotateZ(-5deg); }
+            72% { transform: rotateX(14deg) rotateY(-250deg) rotateZ(3deg); }
+            82% { transform: rotateX(-16deg) rotateY(-285deg) rotateZ(-7deg); }
+            92% { transform: rotateX(5deg) rotateY(-320deg) rotateZ(2deg); }
+            100% { transform: rotateX(-10deg) rotateY(-300deg) rotateZ(-3deg); }
         }
     </style>
 </head>
@@ -309,7 +248,6 @@
                 <div class="hero-visual fade-in delay-3">
                     <div class="hero-graphic">
                         <div class="cubes-container">
-                            <!-- Cube 1 - Main (center) -->
                             <div class="cube-wrapper cube-wrapper--1">
                                 <div class="cube cube--1">
                                     <div class="cube-face cube-face--front"></div>
@@ -320,7 +258,6 @@
                                     <div class="cube-face cube-face--bottom"></div>
                                 </div>
                             </div>
-                            <!-- Cube 2 - Top left -->
                             <div class="cube-wrapper cube-wrapper--2">
                                 <div class="cube cube--2">
                                     <div class="cube-face cube-face--front"></div>
@@ -331,7 +268,6 @@
                                     <div class="cube-face cube-face--bottom"></div>
                                 </div>
                             </div>
-                            <!-- Cube 3 - Bottom right -->
                             <div class="cube-wrapper cube-wrapper--3">
                                 <div class="cube cube--3">
                                     <div class="cube-face cube-face--front"></div>
