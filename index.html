@@ -142,51 +142,123 @@
 
         .cube-face {
             position: absolute;
-            /* Backface für alle Flächen verstecken um Z-Fighting zu vermeiden */
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
-            /* Saubere Kanten */
             transform-style: flat;
-            /* Leichter Rand für sauberere Kanten */
             box-sizing: border-box;
+            /* Farbiger Border in der gleichen Farbe wie die Fläche - verhindert weiße Kanten */
+            border: 1px solid;
+            /* Leichte Skalierung nach außen um Lücken zu schließen */
+            margin: -0.5px;
         }
 
         /* Cube 1 - Größe 70px, halbe Größe = 35px */
         .cube--1 .cube-face {
-            width: 70px;
-            height: 70px;
+            width: 71px;
+            height: 71px;
         }
-        /* Leicht versetzte translateZ-Werte um Z-Fighting zu vermeiden */
-        .cube--1 .cube-face--front  { transform: translateZ(35.01px); background: #3b82f6; }
-        .cube--1 .cube-face--back   { transform: rotateY(180deg) translateZ(35.01px); background: #2563eb; }
-        .cube--1 .cube-face--right  { transform: rotateY(90deg) translateZ(35.01px); background: #3b82f6; }
-        .cube--1 .cube-face--left   { transform: rotateY(-90deg) translateZ(35.01px); background: #2563eb; }
-        .cube--1 .cube-face--top    { transform: rotateX(90deg) translateZ(35.01px); background: #60a5fa; }
-        .cube--1 .cube-face--bottom { transform: rotateX(-90deg) translateZ(35.01px); background: #1d4ed8; }
+        .cube--1 .cube-face--front  { 
+            transform: translateZ(35px); 
+            background: #3b82f6; 
+            border-color: #3b82f6;
+        }
+        .cube--1 .cube-face--back   { 
+            transform: rotateY(180deg) translateZ(35px); 
+            background: #2563eb; 
+            border-color: #2563eb;
+        }
+        .cube--1 .cube-face--right  { 
+            transform: rotateY(90deg) translateZ(35px); 
+            background: #3b82f6; 
+            border-color: #3b82f6;
+        }
+        .cube--1 .cube-face--left   { 
+            transform: rotateY(-90deg) translateZ(35px); 
+            background: #2563eb; 
+            border-color: #2563eb;
+        }
+        .cube--1 .cube-face--top    { 
+            transform: rotateX(90deg) translateZ(35px); 
+            background: #60a5fa; 
+            border-color: #60a5fa;
+        }
+        .cube--1 .cube-face--bottom { 
+            transform: rotateX(-90deg) translateZ(35px); 
+            background: #1d4ed8; 
+            border-color: #1d4ed8;
+        }
 
-        /* Cube 2 - Größe 45px, halbe Größe = 22.5px */
+        /* Cube 2 - Größe 45px */
         .cube--2 .cube-face {
-            width: 45px;
-            height: 45px;
+            width: 46px;
+            height: 46px;
         }
-        .cube--2 .cube-face--front  { transform: translateZ(22.51px); background: #2563eb; }
-        .cube--2 .cube-face--back   { transform: rotateY(180deg) translateZ(22.51px); background: #1d4ed8; }
-        .cube--2 .cube-face--right  { transform: rotateY(90deg) translateZ(22.51px); background: #2563eb; }
-        .cube--2 .cube-face--left   { transform: rotateY(-90deg) translateZ(22.51px); background: #1d4ed8; }
-        .cube--2 .cube-face--top    { transform: rotateX(90deg) translateZ(22.51px); background: #3b82f6; }
-        .cube--2 .cube-face--bottom { transform: rotateX(-90deg) translateZ(22.51px); background: #1e40af; }
+        .cube--2 .cube-face--front  { 
+            transform: translateZ(22.5px); 
+            background: #2563eb; 
+            border-color: #2563eb;
+        }
+        .cube--2 .cube-face--back   { 
+            transform: rotateY(180deg) translateZ(22.5px); 
+            background: #1d4ed8; 
+            border-color: #1d4ed8;
+        }
+        .cube--2 .cube-face--right  { 
+            transform: rotateY(90deg) translateZ(22.5px); 
+            background: #2563eb; 
+            border-color: #2563eb;
+        }
+        .cube--2 .cube-face--left   { 
+            transform: rotateY(-90deg) translateZ(22.5px); 
+            background: #1d4ed8; 
+            border-color: #1d4ed8;
+        }
+        .cube--2 .cube-face--top    { 
+            transform: rotateX(90deg) translateZ(22.5px); 
+            background: #3b82f6; 
+            border-color: #3b82f6;
+        }
+        .cube--2 .cube-face--bottom { 
+            transform: rotateX(-90deg) translateZ(22.5px); 
+            background: #1e40af; 
+            border-color: #1e40af;
+        }
 
-        /* Cube 3 - Transparente Version */
+        /* Cube 3 - Solide Farben statt Transparenz (Transparenz verstärkt Flimmern) */
         .cube--3 .cube-face {
-            width: 45px;
-            height: 45px;
+            width: 46px;
+            height: 46px;
         }
-        .cube--3 .cube-face--front  { transform: translateZ(22.51px); background: rgba(96, 165, 250, 0.85); }
-        .cube--3 .cube-face--back   { transform: rotateY(180deg) translateZ(22.51px); background: rgba(59, 130, 246, 0.85); }
-        .cube--3 .cube-face--right  { transform: rotateY(90deg) translateZ(22.51px); background: rgba(96, 165, 250, 0.85); }
-        .cube--3 .cube-face--left   { transform: rotateY(-90deg) translateZ(22.51px); background: rgba(59, 130, 246, 0.85); }
-        .cube--3 .cube-face--top    { transform: rotateX(90deg) translateZ(22.51px); background: rgba(147, 197, 253, 0.9); }
-        .cube--3 .cube-face--bottom { transform: rotateX(-90deg) translateZ(22.51px); background: rgba(37, 99, 235, 0.85); }
+        .cube--3 .cube-face--front  { 
+            transform: translateZ(22.5px); 
+            background: #60a5fa; 
+            border-color: #60a5fa;
+        }
+        .cube--3 .cube-face--back   { 
+            transform: rotateY(180deg) translateZ(22.5px); 
+            background: #3b82f6; 
+            border-color: #3b82f6;
+        }
+        .cube--3 .cube-face--right  { 
+            transform: rotateY(90deg) translateZ(22.5px); 
+            background: #60a5fa; 
+            border-color: #60a5fa;
+        }
+        .cube--3 .cube-face--left   { 
+            transform: rotateY(-90deg) translateZ(22.5px); 
+            background: #3b82f6; 
+            border-color: #3b82f6;
+        }
+        .cube--3 .cube-face--top    { 
+            transform: rotateX(90deg) translateZ(22.5px); 
+            background: #93c5fd; 
+            border-color: #93c5fd;
+        }
+        .cube--3 .cube-face--bottom { 
+            transform: rotateX(-90deg) translateZ(22.5px); 
+            background: #2563eb; 
+            border-color: #2563eb;
+        }
 
         /* Sanftere Animationen ohne abrupte Übergänge */
         @keyframes rotateCube1 {
@@ -213,7 +285,6 @@
             .cubes-container {
                 width: 100px;
                 height: 100px;
-                /* Reduzierte Perspektive für Mobile */
                 transform: translateZ(0) scale(0.85);
             }
             
@@ -227,16 +298,16 @@
             }
             
             .cube--1 .cube-face {
-                width: 50px;
-                height: 50px;
+                width: 51px;
+                height: 51px;
             }
             
-            .cube--1 .cube-face--front  { transform: translateZ(25.01px); }
-            .cube--1 .cube-face--back   { transform: rotateY(180deg) translateZ(25.01px); }
-            .cube--1 .cube-face--right  { transform: rotateY(90deg) translateZ(25.01px); }
-            .cube--1 .cube-face--left   { transform: rotateY(-90deg) translateZ(25.01px); }
-            .cube--1 .cube-face--top    { transform: rotateX(90deg) translateZ(25.01px); }
-            .cube--1 .cube-face--bottom { transform: rotateX(-90deg) translateZ(25.01px); }
+            .cube--1 .cube-face--front  { transform: translateZ(25px); }
+            .cube--1 .cube-face--back   { transform: rotateY(180deg) translateZ(25px); }
+            .cube--1 .cube-face--right  { transform: rotateY(90deg) translateZ(25px); }
+            .cube--1 .cube-face--left   { transform: rotateY(-90deg) translateZ(25px); }
+            .cube--1 .cube-face--top    { transform: rotateX(90deg) translateZ(25px); }
+            .cube--1 .cube-face--bottom { transform: rotateX(-90deg) translateZ(25px); }
             
             .cube--2,
             .cube--3 {
@@ -246,22 +317,22 @@
             
             .cube--2 .cube-face,
             .cube--3 .cube-face {
-                width: 32px;
-                height: 32px;
+                width: 33px;
+                height: 33px;
             }
             
             .cube--2 .cube-face--front,
-            .cube--3 .cube-face--front  { transform: translateZ(16.01px); }
+            .cube--3 .cube-face--front  { transform: translateZ(16px); }
             .cube--2 .cube-face--back,
-            .cube--3 .cube-face--back   { transform: rotateY(180deg) translateZ(16.01px); }
+            .cube--3 .cube-face--back   { transform: rotateY(180deg) translateZ(16px); }
             .cube--2 .cube-face--right,
-            .cube--3 .cube-face--right  { transform: rotateY(90deg) translateZ(16.01px); }
+            .cube--3 .cube-face--right  { transform: rotateY(90deg) translateZ(16px); }
             .cube--2 .cube-face--left,
-            .cube--3 .cube-face--left   { transform: rotateY(-90deg) translateZ(16.01px); }
+            .cube--3 .cube-face--left   { transform: rotateY(-90deg) translateZ(16px); }
             .cube--2 .cube-face--top,
-            .cube--3 .cube-face--top    { transform: rotateX(90deg) translateZ(16.01px); }
+            .cube--3 .cube-face--top    { transform: rotateX(90deg) translateZ(16px); }
             .cube--2 .cube-face--bottom,
-            .cube--3 .cube-face--bottom { transform: rotateX(-90deg) translateZ(16.01px); }
+            .cube--3 .cube-face--bottom { transform: rotateX(-90deg) translateZ(16px); }
             
             /* Langsamere Animation auf Mobile für bessere Performance */
             .cube--1 { animation-duration: 35s; }
