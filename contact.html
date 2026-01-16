@@ -45,21 +45,38 @@
                         
                         <div class="contact-details">
                             <div class="contact-item">
-                                <div class="contact-icon contact-icon--email"></div>
+                                <div class="contact-icon contact-icon--email" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 6h16v12H4z" />
+                                        <path d="M4 7l8 6 8-6" />
+                                    </svg>
+                                </div>
                                 <div>
                                     <strong>E-Mail</strong><br>
                                     <a href="mailto:info@webstudio-pm.de">info@webstudio-pm.de</a>
                                 </div>
                             </div>
+
                             <div class="contact-item">
-                                <div class="contact-icon contact-icon--location"></div>
+                                <div class="contact-icon contact-icon--location" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 21s7-4.5 7-11a7 7 0 0 0-14 0c0 6.5 7 11 7 11z" />
+                                        <path d="M12 10.5a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z" />
+                                    </svg>
+                                </div>
                                 <div>
                                     <strong>Standort</strong><br>
                                     Deutschland
                                 </div>
                             </div>
+
                             <div class="contact-item">
-                                <div class="contact-icon contact-icon--time"></div>
+                                <div class="contact-icon contact-icon--time" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" />
+                                        <path d="M12 6v6l4 2" />
+                                    </svg>
+                                </div>
                                 <div>
                                     <strong>Reaktionszeit</strong><br>
                                     In der Regel innerhalb von 24 Stunden
@@ -110,13 +127,24 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Webstudio PM. Alle Rechte vorbehalten.</p>
+                <p>&copy; 2025 Webstudio PM. Alle Rechte vorbehalten.</p>
                 <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    <script>
+      var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+        "undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){
+          e.src=e.dataset.tallySrc
+        }))
+      };
+      if("undefined"!=typeof Tally)v();
+      else if(d.querySelector('script[src="'+w+'"]')==null){
+        var s=d.createElement("script");
+        s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);
+      }
+    </script>
 </body>
 </html>
