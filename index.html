@@ -15,6 +15,7 @@
     <title>Webstudio PM – Professionelle Webseiten-Erstellung & Hosting</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Override the hero-graphic styles for living animation */
         .hero-graphic {
             width: 100%;
             max-width: 400px;
@@ -25,25 +26,55 @@
             align-items: center;
             position: relative;
             overflow: visible;
+            /* Organic morphing border-radius animation */
+            animation: morphShape 8s ease-in-out infinite;
             border-radius: 50%;
-            animation: breathe 6s ease-in-out infinite;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* Inner glow that pulses */
+            box-shadow: 
+                inset 0 0 60px rgba(37, 99, 235, 0.08),
+                inset 0 0 120px rgba(37, 99, 235, 0.05);
+            /* Smooth transition for mouse interaction */
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
             cursor: pointer;
         }
 
-        /* Clean, subtle breathing animation */
-        @keyframes breathe {
+        /* Hover effect - gentle push back */
+        .hero-graphic:hover {
+            box-shadow: 
+                inset 0 0 80px rgba(37, 99, 235, 0.15),
+                inset 0 0 140px rgba(37, 99, 235, 0.1),
+                0 0 40px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Morphing shape animation - subtle organic deformation */
+        @keyframes morphShape {
             0%, 100% {
-                border-radius: 50%;
-                transform: scale(1);
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+            }
+            12.5% {
+                border-radius: 48% 52% 52% 48% / 52% 48% 52% 48%;
+            }
+            25% {
+                border-radius: 50% 50% 48% 52% / 48% 52% 50% 50%;
+            }
+            37.5% {
+                border-radius: 52% 48% 50% 50% / 50% 50% 48% 52%;
             }
             50% {
-                border-radius: 48% 52% 51% 49% / 51% 49% 52% 48%;
-                transform: scale(1.015);
+                border-radius: 48% 52% 52% 48% / 48% 52% 52% 48%;
+            }
+            62.5% {
+                border-radius: 50% 50% 50% 50% / 52% 48% 48% 52%;
+            }
+            75% {
+                border-radius: 52% 48% 48% 52% / 50% 50% 50% 50%;
+            }
+            87.5% {
+                border-radius: 50% 50% 52% 48% / 48% 52% 48% 52%;
             }
         }
 
-        /* Inner blue glow circle */
+        /* Inner blue circle with enhanced pulsing glow */
         .hero-graphic::before {
             content: '';
             position: absolute;
@@ -51,88 +82,60 @@
             height: 60%;
             background: var(--color-accent-light);
             border-radius: 50%;
-            animation: pulseGlow 4s ease-in-out infinite;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            animation: pulseGlowInner 4s ease-in-out infinite;
+            box-shadow: 
+                0 0 40px rgba(37, 99, 235, 0.3),
+                0 0 80px rgba(37, 99, 235, 0.2),
+                inset 0 0 30px rgba(37, 99, 235, 0.15);
+            transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
         }
 
-        @keyframes pulseGlow {
+        /* Inner circle reacts stronger on hover */
+        .hero-graphic:hover::before {
+            box-shadow: 
+                0 0 60px rgba(37, 99, 235, 0.5),
+                0 0 100px rgba(37, 99, 235, 0.3),
+                inset 0 0 40px rgba(37, 99, 235, 0.2);
+        }
+
+        @keyframes pulseGlowInner {
             0%, 100% { 
                 transform: scale(1); 
                 opacity: 0.5;
                 box-shadow: 
-                    0 0 30px rgba(37, 99, 235, 0.2),
-                    inset 0 0 20px rgba(37, 99, 235, 0.1);
+                    0 0 40px rgba(37, 99, 235, 0.3),
+                    0 0 80px rgba(37, 99, 235, 0.2),
+                    inset 0 0 30px rgba(37, 99, 235, 0.15);
             }
             50% { 
-                transform: scale(1.1); 
-                opacity: 0.75;
+                transform: scale(1.15); 
+                opacity: 0.85;
                 box-shadow: 
-                    0 0 50px rgba(37, 99, 235, 0.35),
-                    inset 0 0 35px rgba(37, 99, 235, 0.2);
+                    0 0 60px rgba(37, 99, 235, 0.5),
+                    0 0 120px rgba(37, 99, 235, 0.35),
+                    inset 0 0 50px rgba(37, 99, 235, 0.25);
             }
         }
 
-        .hero-graphic:hover::before {
-            box-shadow: 
-                0 0 60px rgba(37, 99, 235, 0.4),
-                inset 0 0 40px rgba(37, 99, 235, 0.25);
-        }
-
-        /* Inner squares container - we need real elements for mouse tracking */
-        .hero-squares {
-            position: relative;
-            z-index: 1;
-            width: 80px;
-            height: 80px;
-            transition: transform 0.15s ease-out;
-        }
-
-        .hero-square {
-            position: absolute;
-            border-radius: 12px;
-            transition: transform 0.2s ease-out, box-shadow 0.2s ease;
-        }
-
-        .hero-square--main {
+        /* Keep the blue squares from original design */
+        .hero-graphic::after {
+            content: '';
             width: 80px;
             height: 80px;
             background: var(--color-accent);
-            transform: rotate(12deg);
-            z-index: 3;
-        }
-
-        .hero-square--back-1 {
-            width: 60px;
-            height: 60px;
-            background: var(--color-accent-hover);
-            top: -20px;
-            left: -20px;
-            transform: rotate(12deg);
-            z-index: 2;
-        }
-
-        .hero-square--back-2 {
-            width: 60px;
-            height: 60px;
-            background: rgba(37, 99, 235, 0.4);
-            bottom: -20px;
-            right: -20px;
-            transform: rotate(12deg);
+            border-radius: 12px;
+            position: relative;
             z-index: 1;
+            box-shadow: 
+                -30px -30px 0 -10px var(--color-accent-hover),
+                30px 30px 0 -10px rgba(37, 99, 235, 0.4);
+            transform: rotate(12deg);
+            transition: transform 0.3s ease-out;
         }
 
-        /* Hover states for squares */
-        .hero-graphic:hover .hero-square--main {
-            transform: rotate(16deg) scale(1.05);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
-        }
-
-        .hero-graphic:hover .hero-square--back-1 {
-            transform: rotate(8deg) translate(-3px, -3px);
-        }
-
-        .hero-graphic:hover .hero-square--back-2 {
-            transform: rotate(16deg) translate(3px, 3px);
+        /* Squares rotate slightly on hover */
+        .hero-graphic:hover::after {
+            transform: rotate(20deg) scale(1.05);
         }
     </style>
 </head>
@@ -166,13 +169,7 @@
                     </div>
                 </div>
                 <div class="hero-visual fade-in delay-3">
-                    <div class="hero-graphic" id="heroGraphic">
-                        <div class="hero-squares" id="heroSquares">
-                            <div class="hero-square hero-square--back-1"></div>
-                            <div class="hero-square hero-square--back-2"></div>
-                            <div class="hero-square hero-square--main"></div>
-                        </div>
-                    </div>
+                    <div class="hero-graphic" id="heroGraphic"></div>
                 </div>
             </div>
         </section>
@@ -290,34 +287,46 @@
 
     <script src="script.js"></script>
     <script>
+        // Interactive mouse tracking for hero graphic
         const heroGraphic = document.getElementById('heroGraphic');
-        const heroSquares = document.getElementById('heroSquares');
         
-        if (heroGraphic && heroSquares) {
+        if (heroGraphic) {
+            // Track mouse position relative to the circle center
             heroGraphic.addEventListener('mousemove', (e) => {
                 const rect = heroGraphic.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
                 
-                // Normalized position (-1 to 1)
+                // Calculate distance from center (-1 to 1)
                 const x = (e.clientX - centerX) / (rect.width / 2);
                 const y = (e.clientY - centerY) / (rect.height / 2);
                 
-                // Subtle circle tilt
-                const circleRotateX = -y * 5;
-                const circleRotateY = x * 5;
-                heroGraphic.style.transform = `perspective(600px) rotateX(${circleRotateX}deg) rotateY(${circleRotateY}deg)`;
+                // Apply subtle tilt/push effect (max 8 degrees rotation, 5px translation)
+                const rotateX = -y * 8;
+                const rotateY = x * 8;
+                const translateX = x * 5;
+                const translateY = y * 5;
                 
-                // Squares follow mouse with slight delay feeling
-                const squareX = x * 12;
-                const squareY = y * 12;
-                const squareRotate = 12 + (x * 4);
-                heroSquares.style.transform = `translate(${squareX}px, ${squareY}px) rotate(${squareRotate}deg)`;
+                heroGraphic.style.transform = `
+                    perspective(500px) 
+                    rotateX(${rotateX}deg) 
+                    rotateY(${rotateY}deg)
+                    translate(${translateX}px, ${translateY}px)
+                `;
             });
             
+            // Reset on mouse leave
             heroGraphic.addEventListener('mouseleave', () => {
-                heroGraphic.style.transform = '';
-                heroSquares.style.transform = '';
+                heroGraphic.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) translate(0px, 0px)';
+            });
+            
+            // Add slight "push" effect on click
+            heroGraphic.addEventListener('mousedown', () => {
+                heroGraphic.style.transform += ' scale(0.97)';
+            });
+            
+            heroGraphic.addEventListener('mouseup', () => {
+                heroGraphic.style.transform = heroGraphic.style.transform.replace(' scale(0.97)', '');
             });
         }
     </script>
