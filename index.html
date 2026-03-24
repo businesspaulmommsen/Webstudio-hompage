@@ -253,10 +253,7 @@
         <div class="webreserve-visual">
           <div class="webreserve-img-wrap">
             <img src="assets/webreserve-mac-ipad-iphone.png" alt="WebController auf Mac, iPad und iPhone" loading="lazy" width="600">
-            <div class="webreserve-badge">
-              <div class="webreserve-badge-dot"></div>
-              <span>Live &amp; aktiv auf Ihren Geräten</span>
-            </div>
+
           </div>
         </div>
       </div>
@@ -678,7 +675,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Three.js Cubes
+// Three.js Cubes – with mouse repulsion & scale effect
 (function () {
   const canvas = document.getElementById("cubes-canvas");
   if (!canvas) return;
@@ -703,7 +700,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function makeGeo(s) {
-    return THREE.RoundedBoxGeometry ? new THREE.RoundedBoxGeometry(s,s,s,8,s*0.12) : new THREE.BoxGeometry(s,s,s);
+    return THREE.RoundedBoxGeometry
+      ? new THREE.RoundedBoxGeometry(s, s, s, 8, s * 0.12)
+      : new THREE.BoxGeometry(s, s, s);
   }
   function addEdges(m) {
     const e = new THREE.EdgesGeometry(m.geometry, 28);
@@ -720,13 +719,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const group = new THREE.Group();
   scene.add(group);
 
-  const c1 = cube(1.45, 0x2563eb); c1.position.set(0,0,-0.25); group.add(c1);
-  const c2 = cube(0.95, 0x1d4ed8); c2.position.set(-1.55,1.05,0.85); group.add(c2);
-  const c3 = cube(0.95, 0x60a5fa); c3.position.set(1.55,-1.05,0.85); group.add(c3);
+  // Base positions & sizes for each cube
+  const cubeData = [
+    { mesh: null, basePos: new THREE.Vector3(0, 0, -0.25),      baseScale: 1.45, color: 0x2563eb },
+    { mesh: null, basePos: new THREE.Vector3(-1.55, 1.05, 0.85), baseScale: 0.95, color: 0x1d4ed8 },
+    { mesh: null, basePos: new THREE.Vector3(1.55, -1.05, 0.85), baseScale: 0.95, color: 0x60a5fa },
+  ];
 
-  c1.rotation.set(-0.25,0.35,0.05);
-  c2.rotation.set(0.18,-0.25,0.12);
-  c3.rotation.set(-0.12,0.22,-0.08);
+  cubeData[0].mesh = cube(cubeData[0].baseScale, cubeData[0].color);
+  cubeData[1].mesh = cube(cubeData[1].baseScale, cubeData[1].color);
+  cubeData[2].mesh = cube(cubeData[2].baseScale, cubeData[2].color);
+
+  cubeData[0].mesh.rotation.set(-0.25, 0.35, 0.05);
+  cubeData[1].mesh.rotation.set(0.18, -0.25, 0.12);
+  cubeData[2].mesh.rotation.set(-0.12, 0.22, -0.08);
+
+  cubeData.forEach(d => group.add(d.mesh));
+
+  // Smooth current positions (for lerping)
+  cubeData.forEach(d => {
+    d.currentPos = d.basePos.clone();
+    d.currentScale = 1.0;
+  });
+
+  // Mouse tracking in NDC (-1 to +1)
+  const mouse = new THREE.Vector2(9999, 9999); // start far off-screen
+  const raycaster = new THREE.Raycaster();
+
+  canvas.addEventListener("mousemove", (e) => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = ((e.clientX - r.left) / r.width)  * 2 - 1;
+    mouse.y = -((e.clientY - r.top)  / r.height) * 2 + 1;
+  });
+  canvas.addEventListener("mouseleave", () => {
+    mouse.set(9999, 9999);
+  });
 
   function resize() {
     const r = canvas.getBoundingClientRect();
@@ -737,19 +764,71 @@ document.addEventListener('DOMContentLoaded', function() {
   resize();
   window.addEventListener("resize", resize);
 
+  // Repulsion parameters
+  const REPEL_RADIUS = 2.2;   // world-space distance at which repulsion starts
+  const REPEL_STRENGTH = 3.0; // how far cubes flee
+  const SCALE_BOOST = 0.32;   // how much bigger they grow (fraction of base)
+  const LERP_POS = 0.08;
+  const LERP_SCALE = 0.10;
+
+  // Unproject mouse to a world-space plane at z=0
+  const mousePlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+  const mouseWorld = new THREE.Vector3();
+
   let t = 0;
   function animate() {
     requestAnimationFrame(animate);
+
     if (!prefersReducedMotion) {
       t += 0.012;
+
+      // Base float animation (same as before)
       group.rotation.y += 0.006;
-      group.rotation.x = Math.sin(t*0.35)*0.08;
-      c2.position.y = 1.05 + Math.sin(t*0.8)*0.05;
-      c3.position.y = -1.05 + Math.cos(t*0.8)*0.05;
-      c1.rotation.y += 0.0025; c1.rotation.x += 0.0017;
-      c2.rotation.y -= 0.005; c2.rotation.x += 0.0045;
-      c3.rotation.y += 0.005; c3.rotation.x -= 0.0036;
+      group.rotation.x = Math.sin(t * 0.35) * 0.08;
+
+      // Natural bob for c2 & c3
+      const floatY = [0, Math.sin(t * 0.8) * 0.05, Math.cos(t * 0.8) * 0.05];
+
+      // Unproject mouse to world at z=0 plane
+      raycaster.setFromCamera(mouse, camera);
+      raycaster.ray.intersectPlane(mousePlane, mouseWorld);
+
+      cubeData.forEach((d, i) => {
+        // World position of this cube (base + group rotation is approximated)
+        const base = d.basePos.clone();
+        if (i === 1) base.y += floatY[1];
+        if (i === 2) base.y += floatY[2];
+
+        // Vector from mouse to cube
+        const toMouse = base.clone().sub(mouseWorld);
+        const dist = toMouse.length();
+
+        let targetPos = base.clone();
+        let targetScale = 1.0;
+
+        if (mouse.x < 999 && dist < REPEL_RADIUS) {
+          // Ease: stronger when closer
+          const t_ease = 1 - (dist / REPEL_RADIUS);
+          const force = t_ease * t_ease * REPEL_STRENGTH;
+          const pushDir = toMouse.normalize().multiplyScalar(force);
+          targetPos.add(pushDir);
+          targetScale = 1.0 + t_ease * SCALE_BOOST;
+        }
+
+        // Lerp towards target
+        d.currentPos.lerp(targetPos, LERP_POS);
+        d.currentScale += (targetScale - d.currentScale) * LERP_SCALE;
+
+        d.mesh.position.copy(d.currentPos);
+        d.mesh.scale.setScalar(d.currentScale);
+      });
+
+      // Self-rotations
+      cubeData[0].mesh.rotation.y += 0.0025; cubeData[0].mesh.rotation.x += 0.0017;
+      cubeData[1].mesh.rotation.y -= 0.005;  cubeData[1].mesh.rotation.x += 0.0045;
+      cubeData[2].mesh.rotation.y += 0.005;  cubeData[2].mesh.rotation.x -= 0.0036;
     }
+
     renderer.render(scene, camera);
   }
   animate();
